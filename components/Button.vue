@@ -35,21 +35,13 @@ export default {
         ? "★"
         : " ";
     },
-    _class() {
-      return this.person != undefined
-        ? `bg-${this.person.split(" ")[1].toLowerCase()}`
-        : this.weapon != undefined
-        ? this.weapon.toLowerCase()
-        : this.room != undefined
-        ? this.room.split(" ")[0].toLowerCase()
-        : "";
-    },
   },
 };
 </script>
 
 <style scoped>
 input {
+  position: relative;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -58,5 +50,8 @@ input {
   border-radius: 2px;
   line-height: 24px;
   appearance: none;
+}
+input:active {
+  top: 1px;
 }
 </style>

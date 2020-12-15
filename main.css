@@ -70,6 +70,12 @@ h6 {
 .strike {
   text-decoration: line-through;
   text-decoration-thickness: 3px;
+  text-decoration-color: var(--black);
+}
+
+.circle {
+  border: 2px solid var(--black);
+  border-radius: 50%;
 }
 
 .bg-mustard {

@@ -7,6 +7,8 @@
         >empty</span
       >), maybe (?), does not have card (X), has card (★).
     </p>
-    <p class="m0">Click item name to cross it off.</p>
+    <p class="m0">
+      Click item names to cross them off (not it) or circle them (it).
+    </p>
   </header>
 </template>
