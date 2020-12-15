@@ -1,0 +1,33 @@
+{
+  "name": "clues",
+  "version": "0.1.0",
+  "description": "Note taking web app for the murder mystery game Clue",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianzelip/clues.git"
+  },
+  "keywords": [
+    "Clue"
+  ],
+  "author": "Brian Zelip <bzelip@protonmail.com> (https://zelip.me/)",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/brianzelip/clues/issues"
+  },
+  "homepage": "https://github.com/brianzelip/clues#readme",
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.2.0",
+    "parcel-bundler": "^1.12.4",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "dependencies": {
+    "palette.css": "^0.3.4",
+    "vue": "^2.6.12",
+    "vue-hot-reload-api": "^2.3.4"
+  }
+}
