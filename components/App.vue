@@ -1,15 +1,6 @@
 <template>
   <div class="container px2 pb2">
-    <header class="py3">
-      <h1 class="mt0 mb2">Clue clues 🔎</h1>
-      <p class="m0">
-        Click player card buttons to cycle through 3 states: unknown (<span
-          class="italic"
-          >empty</span
-        >), maybe (?), confirm (★).
-      </p>
-      <p class="m0">Click item name to cross it off.</p>
-    </header>
+    <TheHeader></TheHeader>
 
     <main>
       <table
@@ -54,18 +45,19 @@
         </tbody>
       </table>
     </main>
-    <footer class="py2 center">
-      <a href="https://github.com/brianzelip/clues.git">source</a>
-    </footer>
+
+    <TheFooter></TheFooter>
   </div>
 </template>
 
 <script>
+import TheHeader from "./TheHeader.vue";
 import Item from "./Item.vue";
 import Button from "./Button.vue";
+import TheFooter from "./TheFooter.vue";
 
 export default {
-  components: { Item, Button },
+  components: { TheHeader, Item, Button, TheFooter },
   data() {
     return {
       players: ["Abbie", "Colleen", "Molly", "Paul", "Bryan", "Claire"],

@@ -9,13 +9,14 @@ export default {
     return {
       // 0 - don't know anything
       // 1 - maybe
-      // 2 - has card
+      // 2 - confirm not has card
+      // 3 - confirm has card
       state: 0,
     };
   },
   methods: {
     update() {
-      if (this.state < 2) {
+      if (this.state < 3) {
         this.state++;
       } else {
         this.state = 0;
@@ -29,6 +30,8 @@ export default {
         : this.state == 1
         ? "?"
         : this.state == 2
+        ? "X"
+        : this.state == 3
         ? "★"
         : " ";
     },
