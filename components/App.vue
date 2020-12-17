@@ -9,7 +9,15 @@
         <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col" v-for="(p, i) in players" :key="i">{{ p }}</th>
+            <th scope="col" v-for="(p, i) in players" :key="i">
+              <ColHeader
+                :player="p"
+                :numPlayers="players.length"
+                :playersIndex="i"
+                v-on:add-player="addPlayer"
+                v-on:remove-player="removePlayer"
+              ></ColHeader>
+            </th>
           </tr>
         </thead>
 
@@ -53,14 +61,15 @@
 <script>
 import TheHeader from "./TheHeader.vue";
 import Item from "./Item.vue";
+import ColHeader from "./ColHeader.vue";
 import Button from "./Button.vue";
 import TheFooter from "./TheFooter.vue";
 
 export default {
-  components: { TheHeader, Item, Button, TheFooter },
+  components: { TheHeader, Item, ColHeader, Button, TheFooter },
   data() {
     return {
-      players: ["Abbie", "Colleen", "Molly", "Paul", "Bryan", "Claire"],
+      players: ["You", "me", "Him", "Bryan", "Claire", "Molly"],
       people: [
         "Colonel Mustard",
         "Miss Scarlet",
@@ -96,12 +105,21 @@ export default {
     },
   },
   methods: {
-    strike() {},
+    addPlayer() {
+      this.players.push("New");
+    },
+    removePlayer(player) {
+      this.players.pop();
+    },
   },
 };
 </script>
 
 <style>
+thead {
+  position: relative;
+  z-index: 1;
+}
 thead th {
   position: sticky;
   top: 0;
