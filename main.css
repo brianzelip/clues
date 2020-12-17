@@ -93,3 +93,7 @@ h6 {
 .bg-gray {
   background-color: #ddd;
 }
+
+.mlauto {
+  margin-left: auto;
+}

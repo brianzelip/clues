@@ -1,6 +1,12 @@
 <template>
   <section>
-    <input type="text" maxlength="3" size="3" v-model="player" />
+    <input
+      :class="{ mlauto: playersIndex == numPlayers - 1 }"
+      type="text"
+      maxlength="3"
+      size="3"
+      v-model="player"
+    />
     <button
       v-if="numPlayers > 1 && playersIndex == numPlayers - 1"
       class="remove"
@@ -52,11 +58,13 @@ section {
   z-index: 10;
 }
 input {
+  margin-left: auto;
   appearance: none;
   background-color: inherit;
   border: none;
   text-align: center;
 }
+
 button {
   position: relative;
   display: flex;
@@ -71,9 +79,7 @@ button:active {
   top: 1px;
 }
 button.add {
-  flex-grow: 1;
-  display: flex;
-  justify-content: right;
+  margin-left: auto;
 }
 svg {
   width: 0.75rem;
