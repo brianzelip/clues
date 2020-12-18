@@ -67,6 +67,10 @@ h6 {
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
+.container {
+  max-width: 1200px;
+}
+
 .strike {
   text-decoration: line-through;
   text-decoration-thickness: 3px;

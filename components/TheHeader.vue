@@ -1,7 +1,7 @@
 <template>
   <header class="py3">
     <h1 class="mt0 mb2">Clue clues 🔎</h1>
-    <details open>
+    <details>
       <summary>Help</summary>
       <ol class="list-reset pt2 pl2">
         <li>Click player name to edit.</li>
