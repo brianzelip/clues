@@ -8,15 +8,22 @@
       >
         <thead>
           <tr>
-            <th scope="col"></th>
+            <th scope="col">
+              <AddPlayerBtn
+                v-if="numPlayers == 0"
+                v-on:add-player="addPlayer"
+                :style="{ paddingTop: '10px', paddingBottom: '10px' }"
+              ></AddPlayerBtn>
+            </th>
             <th scope="col" v-for="(p, i) in players" :key="i">
-              <ColHeader
+              <PlayerColHeader
                 :player="p"
                 :numPlayers="players.length"
-                :playersIndex="i"
+                :index="i"
                 v-on:add-player="addPlayer"
                 v-on:remove-player="removePlayer"
-              ></ColHeader>
+                v-on:update-player="updatePlayer"
+              ></PlayerColHeader>
             </th>
           </tr>
         </thead>
@@ -61,15 +68,23 @@
 <script>
 import TheHeader from "./TheHeader.vue";
 import Item from "./Item.vue";
-import ColHeader from "./ColHeader.vue";
+import AddPlayerBtn from "./AddPlayerBtn.vue";
+import PlayerColHeader from "./PlayerColHeader.vue";
 import Button from "./Button.vue";
 import TheFooter from "./TheFooter.vue";
 
 export default {
-  components: { TheHeader, Item, ColHeader, Button, TheFooter },
+  components: {
+    TheHeader,
+    Item,
+    AddPlayerBtn,
+    PlayerColHeader,
+    Button,
+    TheFooter,
+  },
   data() {
     return {
-      players: ["You", "me", "Him", "Bryan", "Claire", "Molly"],
+      players: ["You"],
       people: [
         "Colonel Mustard",
         "Miss Scarlet",
@@ -105,11 +120,17 @@ export default {
     },
   },
   methods: {
+    updatePlayer(obj) {
+      this.players[obj.index] = obj.player;
+    },
     addPlayer() {
       this.players.push("New");
     },
-    removePlayer(player) {
-      this.players.pop();
+    removePlayer(i) {
+      const l = this.players.length;
+      let start = this.players.slice(0, i);
+      let end = this.players.slice(i + 1);
+      this.players = [...start, ...end];
     },
   },
 };

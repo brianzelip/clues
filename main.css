@@ -97,3 +97,42 @@ h6 {
 .mlauto {
   margin-left: auto;
 }
+
+/* Add/remove buttons */
+
+.add,
+.remove {
+  position: relative;
+  display: flex;
+  align-items: center;
+  appearance: none;
+  background-color: inherit;
+  font-size: 1.25rem;
+  color: var(--black);
+  border: none;
+}
+
+.add {
+  margin-left: auto;
+}
+
+.add:active,
+.remove:active {
+  top: 1px;
+}
+
+.add svg,
+.remove svg {
+  width: 0.75rem;
+  fill: #999;
+  transition: 0.15s;
+}
+
+.add:hover svg,
+.remove:hover svg {
+  fill: var(--black);
+}
+
+.remove svg.rotate {
+  transform: rotate(45deg);
+}

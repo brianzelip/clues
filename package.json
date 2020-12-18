@@ -1,6 +1,6 @@
 {
   "name": "clues",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Note taking web app for the murder mystery game Clue",
   "main": "index.html",
   "scripts": {
