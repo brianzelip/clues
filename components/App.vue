@@ -3,9 +3,7 @@
     <TheHeader></TheHeader>
 
     <main>
-      <table
-        class="relative table-light overflow-hidden bg-white border rounded"
-      >
+      <table class="relative table-light bg-white border rounded">
         <thead>
           <tr>
             <th scope="col">
@@ -33,6 +31,7 @@
             <Item :item="p"></Item>
             <td v-for="n in numPlayers" :key="`${p}-${n}`">
               <Button :person="p"></Button>
+              <MaybeCounter></MaybeCounter>
             </td>
           </tr>
 
@@ -137,15 +136,13 @@ export default {
 </script>
 
 <style>
-thead {
-  position: relative;
-  z-index: 1;
-}
 thead th {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   background-color: #ddd;
   text-align: center;
+  z-index: 1;
 }
 tr:not(.spacer):hover {
   background-color: rgba(0, 0, 0, 0.0625);
