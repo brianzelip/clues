@@ -2,6 +2,11 @@
 
 :root {
   --black: rgb(51, 51, 51);
+  --white: white;
+  --bg-darkmode: var(--black);
+  --fg-darkmode: var(--white);
+  --bg-lightmode: var(--white);
+  --fg-lightmode: var(--black);
 }
 
 /*
@@ -74,12 +79,23 @@ h6 {
 .strike {
   text-decoration: line-through;
   text-decoration-thickness: 3px;
+}
+.table-light .strike {
   text-decoration-color: var(--black);
+}
+.table-dark .strike {
+  text-decoration-color: var(--white);
 }
 
 .circle {
-  border: 2px solid var(--black);
+  border: 2px solid;
   border-radius: 50%;
+}
+.table-light .circle {
+  border-color: var(--black);
+}
+.table-dark .circle {
+  border-color: var(--white);
 }
 
 .bg-mustard {
@@ -112,7 +128,6 @@ h6 {
   appearance: none;
   background-color: inherit;
   font-size: 1.25rem;
-  color: var(--black);
   border: none;
 }
 
@@ -128,15 +143,63 @@ h6 {
 .add svg,
 .remove svg {
   width: 0.75rem;
-  fill: #999;
   transition: 0.15s;
 }
 
-.add:hover svg,
-.remove:hover svg {
+.table-light .add svg,
+.table-light .remove svg {
+  fill: #999;
+}
+
+.table-light .add:hover svg,
+.table-light .remove:hover svg {
   fill: var(--black);
+}
+
+.table-dark .add svg,
+.table-dark .remove svg {
+  fill: rgb(102, 102, 102);
+}
+.table-dark .add:hover svg,
+.table-dark .remove:hover svg {
+  fill: var(--white);
 }
 
 .remove svg.rotate {
   transform: rotate(45deg);
+}
+
+.page.dark button:hover {
+  color: var(--fg-darkmode);
+}
+.page.light button:hover {
+  color: var(--fg-lightmode);
+}
+
+.page.dark {
+  background-color: var(--bg-darkmode);
+  color: var(--fg-darkmode);
+}
+.page.light {
+  background-color: var(--bg-lightmode);
+  color: var(--fg-lightmode);
+}
+
+.table-dark {
+  color: var(--white);
+}
+
+.table-dark td,
+.table-dark th {
+  color: inherit;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(255, 255, 255, 0.125);
+}
+.table-dark thead th {
+  background-color: rgb(34, 34, 34);
+}
+
+.page.dark a {
+  color: #12b337;
 }

@@ -1,66 +1,71 @@
 <template>
-  <div class="container px2 pb2">
-    <TheHeader></TheHeader>
+  <div class="page" :class="{ dark: darkMode, light: !darkMode }">
+    <div class="container px2 pb2">
+      <TheHeader v-on:toggle-color="toggleColor"></TheHeader>
 
-    <main>
-      <table class="relative table-light bg-white border rounded">
-        <thead>
-          <tr>
-            <th scope="col">
-              <AddPlayerBtn
-                v-if="numPlayers == 0"
-                v-on:add-player="addPlayer"
-                :style="{ paddingTop: '10px', paddingBottom: '10px' }"
-              ></AddPlayerBtn>
-            </th>
-            <th scope="col" v-for="(p, i) in players" :key="i">
-              <PlayerColHeader
-                :player="p"
-                :numPlayers="players.length"
-                :index="i"
-                v-on:add-player="addPlayer"
-                v-on:remove-player="removePlayer"
-                v-on:update-player="updatePlayer"
-              ></PlayerColHeader>
-            </th>
-          </tr>
-        </thead>
+      <main>
+        <table
+          class="relative border rounded"
+          :class="{ 'table-dark': darkMode, 'table-light': !darkMode }"
+        >
+          <thead>
+            <tr>
+              <th scope="col">
+                <AddPlayerBtn
+                  v-if="numPlayers == 0"
+                  v-on:add-player="addPlayer"
+                  :style="{ paddingTop: '10px', paddingBottom: '10px' }"
+                ></AddPlayerBtn>
+              </th>
+              <th scope="col" v-for="(p, i) in players" :key="i">
+                <PlayerColHeader
+                  :player="p"
+                  :numPlayers="players.length"
+                  :index="i"
+                  v-on:add-player="addPlayer"
+                  v-on:remove-player="removePlayer"
+                  v-on:update-player="updatePlayer"
+                ></PlayerColHeader>
+              </th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr v-for="(p, i) in people" :key="`${p}-${i}`">
-            <Item :item="p"></Item>
-            <td v-for="n in numPlayers" :key="`${p}-${n}`">
-              <Button :person="p"></Button>
-              <MaybeCounter></MaybeCounter>
-            </td>
-          </tr>
+          <tbody>
+            <tr v-for="(p, i) in people" :key="`${p}-${i}`">
+              <Item :item="p"></Item>
+              <td v-for="n in numPlayers" :key="`${p}-${n}`">
+                <Button :person="p"></Button>
+                <MaybeCounter></MaybeCounter>
+              </td>
+            </tr>
 
-          <tr class="spacer">
-            <td :colspan="players.length + 1"></td>
-          </tr>
+            <tr class="spacer">
+              <td :colspan="players.length + 1"></td>
+            </tr>
 
-          <tr v-for="(r, i) in rooms" :key="`${r}-${i}`">
-            <Item :item="r"></Item>
-            <td v-for="n in numPlayers" :key="`${r}-${n}`">
-              <Button :room="r"></Button>
-            </td>
-          </tr>
+            <tr v-for="(r, i) in rooms" :key="`${r}-${i}`">
+              <Item :item="r"></Item>
+              <td v-for="n in numPlayers" :key="`${r}-${n}`">
+                <Button :room="r"></Button>
+              </td>
+            </tr>
 
-          <tr class="spacer">
-            <td :colspan="players.length + 1"></td>
-          </tr>
+            <tr class="spacer">
+              <td :colspan="players.length + 1"></td>
+            </tr>
 
-          <tr v-for="(w, i) in weapons" :key="`${w}-${i}`">
-            <Item :item="w"></Item>
-            <td v-for="n in numPlayers" :key="`${w}-${n}`">
-              <Button :weapon="w"></Button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </main>
+            <tr v-for="(w, i) in weapons" :key="`${w}-${i}`">
+              <Item :item="w"></Item>
+              <td v-for="n in numPlayers" :key="`${w}-${n}`">
+                <Button :weapon="w"></Button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
 
-    <TheFooter></TheFooter>
+      <TheFooter></TheFooter>
+    </div>
   </div>
 </template>
 
@@ -83,6 +88,7 @@ export default {
   },
   data() {
     return {
+      darkMode: false,
       players: ["You"],
       people: [
         "Colonel Mustard",
@@ -119,6 +125,9 @@ export default {
     },
   },
   methods: {
+    toggleColor() {
+      this.darkMode = !this.darkMode;
+    },
     updatePlayer(obj) {
       this.players[obj.index] = obj.player;
     },
@@ -137,15 +146,25 @@ export default {
 
 <style>
 thead th {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background-color: #ddd;
   text-align: center;
   z-index: 1;
 }
-tr:not(.spacer):hover {
+.table-light thead th {
+  color: var(--fg-lightmode);
+  background-color: #ddd;
+}
+.table-dark thead th {
+  color: var(--fg-darkmode);
+  background-color: rgb(34, 34, 34);
+}
+
+.table-light tr:not(.spacer):hover {
   background-color: rgba(0, 0, 0, 0.0625);
+}
+.table-dark tr:not(.spacer):hover {
+  background-color: rgba(255, 255, 255, 0.0625);
 }
 
 th,

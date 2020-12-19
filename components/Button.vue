@@ -46,12 +46,22 @@ input {
   height: 100%;
   margin: 0;
   padding: 0;
-  border: 1px solid var(--black);
+  border: 1px solid;
   border-radius: 2px;
   line-height: 24px;
   appearance: none;
 }
 input:active {
   top: 1px;
+}
+.table-light input {
+  color: var(--black);
+  border-color: var(--black);
+  background-color: #ddd;
+}
+.table-dark input {
+  color: var(--white);
+  border-color: var(--white);
+  background-color: rgb(34, 34, 34);
 }
 </style>

@@ -49,8 +49,10 @@ section {
   justify-content: center;
   z-index: 10;
 }
+
 input {
   appearance: none;
+  color: inherit;
   background-color: inherit;
   border: none;
   text-align: center;
