@@ -78,9 +78,7 @@ button {
   color: inherit;
 }
 button:hover {
-  color: green;
   box-shadow: 0px 0px 0px 3px;
-  outline: currentcolor none medium;
 }
 svg {
   display: block;

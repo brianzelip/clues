@@ -89,7 +89,7 @@ export default {
   data() {
     return {
       darkMode: false,
-      players: ["You"],
+      players: ["Player 1"],
       people: [
         "Colonel Mustard",
         "Miss Scarlet",
@@ -151,25 +151,12 @@ thead th {
   text-align: center;
   z-index: 1;
 }
-.table-light thead th {
-  color: var(--fg-lightmode);
-  background-color: #ddd;
-}
-.table-dark thead th {
-  color: var(--fg-darkmode);
-  background-color: rgb(34, 34, 34);
-}
-
-.table-light tr:not(.spacer):hover {
-  background-color: rgba(0, 0, 0, 0.0625);
-}
-.table-dark tr:not(.spacer):hover {
-  background-color: rgba(255, 255, 255, 0.0625);
-}
 
 th,
 td {
   padding: 0.5rem;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
 }
 
 .spacer {

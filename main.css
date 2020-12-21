@@ -3,6 +3,17 @@
 :root {
   --black: rgb(51, 51, 51);
   --white: white;
+
+  --grey: rgb(221, 221, 221); /* #ddd */
+  --dark-grey: rgb(153, 153, 153); /* #999 */
+
+  --dark-black: rgb(34, 34, 34);
+
+  --row-border-color: var(--grey);
+  --row-hover: var(--dark-grey);
+  --svg-fill: var(--dark-grey);
+  --svg-fill-hover: var(--black);
+
   --bg-darkmode: var(--black);
   --fg-darkmode: var(--white);
   --bg-lightmode: var(--white);
@@ -80,22 +91,10 @@ h6 {
   text-decoration: line-through;
   text-decoration-thickness: 3px;
 }
-.table-light .strike {
-  text-decoration-color: var(--black);
-}
-.table-dark .strike {
-  text-decoration-color: var(--white);
-}
 
 .circle {
   border: 2px solid;
   border-radius: 50%;
-}
-.table-light .circle {
-  border-color: var(--black);
-}
-.table-dark .circle {
-  border-color: var(--white);
 }
 
 .bg-mustard {
@@ -146,35 +145,11 @@ h6 {
   transition: 0.15s;
 }
 
-.table-light .add svg,
-.table-light .remove svg {
-  fill: #999;
-}
-
-.table-light .add:hover svg,
-.table-light .remove:hover svg {
-  fill: var(--black);
-}
-
-.table-dark .add svg,
-.table-dark .remove svg {
-  fill: rgb(102, 102, 102);
-}
-.table-dark .add:hover svg,
-.table-dark .remove:hover svg {
-  fill: var(--white);
-}
-
 .remove svg.rotate {
   transform: rotate(45deg);
 }
 
-.page.dark button:hover {
-  color: var(--fg-darkmode);
-}
-.page.light button:hover {
-  color: var(--fg-lightmode);
-}
+/* COLOR */
 
 .page.dark {
   background-color: var(--bg-darkmode);
@@ -185,21 +160,64 @@ h6 {
   color: var(--fg-lightmode);
 }
 
-.table-dark {
-  color: var(--white);
+.page.dark a {
+  color: #12b337;
 }
 
-.table-dark td,
-.table-dark th {
-  color: inherit;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(255, 255, 255, 0.125);
+.page.light .add svg,
+.page.light .remove svg {
+  fill: var(--dark-grey);
 }
-.table-dark thead th {
+
+.page.light .add:hover svg,
+.page.light .remove:hover svg {
+  fill: var(--black);
+}
+
+.page.dark .add svg,
+.page.dark .remove svg {
+  fill: rgb(102, 102, 102);
+}
+.page.dark .add:hover svg,
+.page.dark .remove:hover svg {
+  fill: var(--white);
+}
+
+.page.light thead th {
+  color: var(--fg-lightmode);
+  background-color: #ddd;
+}
+.page.dark thead th {
+  color: var(--fg-darkmode);
   background-color: rgb(34, 34, 34);
 }
 
-.page.dark a {
-  color: #12b337;
+.page.light tr:not(.spacer):hover {
+  background-color: rgba(0, 0, 0, 0.0625);
+}
+.page.dark tr:not(.spacer):hover {
+  background-color: rgba(255, 255, 255, 0.0625);
+}
+
+.page.dark td,
+.page.dark th {
+  color: inherit;
+  border-bottom-color: rgba(255, 255, 255, 0.125);
+}
+.page.dark thead th {
+  background-color: rgb(34, 34, 34);
+}
+
+.page.light .circle {
+  border-color: var(--black);
+}
+.page.dark .circle {
+  border-color: var(--white);
+}
+
+.page.light .strike {
+  text-decoration-color: var(--black);
+}
+.page.dark .strike {
+  text-decoration-color: var(--white);
 }
