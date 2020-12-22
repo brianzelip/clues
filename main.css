@@ -9,6 +9,9 @@
 
   --dark-black: rgb(34, 34, 34);
 
+  --black-barely: rgba(0, 0, 0, 0.125);
+  --white-barely: rgba(255, 255, 255, 0.125);
+
   --row-border-color: var(--grey);
   --row-hover: var(--dark-grey);
   --svg-fill: var(--dark-grey);
@@ -183,6 +186,13 @@ h6 {
   fill: var(--white);
 }
 
+.page.light table {
+  border: 1px solid var(--black-barely);
+}
+.page.dark table {
+  border: 1px solid var(--black-barely);
+}
+
 .page.light thead th {
   color: var(--fg-lightmode);
   background-color: #ddd;
@@ -199,11 +209,24 @@ h6 {
   background-color: rgba(255, 255, 255, 0.0625);
 }
 
+.page.light td,
+.page.light th {
+  color: inherit;
+  border-bottom-color: var(--black-barely);
+}
+.page.light td {
+  border-left-color: var(--black-barely);
+}
+
 .page.dark td,
 .page.dark th {
   color: inherit;
-  border-bottom-color: rgba(255, 255, 255, 0.125);
+  border-bottom-color: var(--white-barely);
 }
+.page.dark td {
+  border-left-color: var(--white-barely);
+}
+
 .page.dark thead th {
   background-color: rgb(34, 34, 34);
 }

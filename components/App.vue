@@ -4,10 +4,7 @@
       <TheHeader v-on:toggle-color="toggleColor"></TheHeader>
 
       <main>
-        <table
-          class="relative border rounded"
-          :class="{ 'table-dark': darkMode, 'table-light': !darkMode }"
-        >
+        <table>
           <thead>
             <tr>
               <th scope="col">
@@ -39,9 +36,7 @@
               </td>
             </tr>
 
-            <tr class="spacer">
-              <td :colspan="players.length + 1"></td>
-            </tr>
+            <SpacerRow :num="numPlayers"></SpacerRow>
 
             <tr v-for="(r, i) in rooms" :key="`${r}-${i}`">
               <Item :item="r"></Item>
@@ -50,9 +45,7 @@
               </td>
             </tr>
 
-            <tr class="spacer">
-              <td :colspan="players.length + 1"></td>
-            </tr>
+            <SpacerRow :num="numPlayers"></SpacerRow>
 
             <tr v-for="(w, i) in weapons" :key="`${w}-${i}`">
               <Item :item="w"></Item>
@@ -75,6 +68,7 @@ import Item from "./Item.vue";
 import AddPlayerBtn from "./AddPlayerBtn.vue";
 import PlayerColHeader from "./PlayerColHeader.vue";
 import Button from "./Button.vue";
+import SpacerRow from "./SpacerRow.vue";
 import TheFooter from "./TheFooter.vue";
 
 export default {
@@ -84,6 +78,7 @@ export default {
     AddPlayerBtn,
     PlayerColHeader,
     Button,
+    SpacerRow,
     TheFooter,
   },
   data() {
@@ -132,7 +127,7 @@ export default {
       this.players[obj.index] = obj.player;
     },
     addPlayer() {
-      this.players.push("New");
+      this.players.push(`Player ${this.players.length + 1}`);
     },
     removePlayer(i) {
       const l = this.players.length;
@@ -145,6 +140,12 @@ export default {
 </script>
 
 <style>
+table {
+  position: relative;
+  border-radius: 3px;
+  border-bottom: 0;
+}
+
 thead th {
   position: sticky;
   top: 0;
@@ -157,6 +158,10 @@ td {
   padding: 0.5rem;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+}
+td {
+  border-left-width: 1px;
+  border-left-style: solid;
 }
 
 .spacer {

@@ -42,7 +42,7 @@ export default {
 <style scoped>
 input {
   position: relative;
-  width: 100%;
+  width: 3rem;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -54,12 +54,12 @@ input {
 input:active {
   top: 1px;
 }
-.table-light input {
+.page.light input {
   color: var(--black);
   border-color: var(--black);
   background-color: #ddd;
 }
-.table-dark input {
+.page.dark input {
   color: var(--white);
   border-color: var(--white);
   background-color: rgb(34, 34, 34);
