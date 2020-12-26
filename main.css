@@ -96,8 +96,7 @@ h6 {
 }
 
 .circle {
-  border: 2px solid;
-  border-radius: 50%;
+  border-color: inherit;
 }
 
 .bg-mustard {
@@ -134,7 +133,7 @@ h6 {
 }
 
 .add {
-  margin-left: auto;
+  /* margin-left: auto; */
 }
 
 .add:active,
@@ -243,4 +242,8 @@ h6 {
 }
 .page.dark .strike {
   text-decoration-color: var(--white);
+}
+
+.v-middle {
+  vertical-align: middle;
 }

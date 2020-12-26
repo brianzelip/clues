@@ -7,12 +7,15 @@
         <table>
           <thead>
             <tr>
-              <th scope="col">
-                <AddPlayerBtn
-                  v-if="numPlayers == 0"
-                  v-on:add-player="addPlayer"
-                  :style="{ paddingTop: '10px', paddingBottom: '10px' }"
-                ></AddPlayerBtn>
+              <th scope="col" class="v-middle">
+                <section class="mine">
+                  <span class="h5 regular" v-if="numPlayers > 0">mine</span>
+                  <AddPlayerBtn
+                    v-if="numPlayers == 0"
+                    v-on:add-player="addPlayer"
+                    :style="{ paddingTop: '10px', paddingBottom: '10px' }"
+                  ></AddPlayerBtn>
+                </section>
               </th>
               <th scope="col" v-for="(p, i) in players" :key="i">
                 <PlayerColHeader
@@ -159,6 +162,7 @@ td {
   border-bottom-width: 1px;
   border-bottom-style: solid;
 }
+
 td {
   border-left-width: 1px;
   border-left-style: solid;
@@ -167,8 +171,26 @@ td {
 .spacer {
   height: 24px;
 }
-th[scope="row"] {
-  width: auto;
-  max-width: 100px;
+
+section.mine {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
+}
+
+section.mine {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
+}
+
+section.mine span {
+  appearance: none;
+  color: inherit;
+  background-color: inherit;
+  border: none;
+  text-align: center;
 }
 </style>
