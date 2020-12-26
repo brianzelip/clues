@@ -1,7 +1,7 @@
 <template>
   <section>
     <input
-      :class="{ mlauto: index == numPlayers - 1 }"
+      :class="{ 'ml-auto': index == numPlayers - 1 }"
       type="text"
       size="4"
       v-model="player"
@@ -9,6 +9,7 @@
     />
     <RemovePlayerBtn
       :player="player"
+      :class="{ 'mr-auto': index == numPlayers - 1 }"
       v-on:remove-player="removePlayer()"
     ></RemovePlayerBtn>
     <AddPlayerBtn

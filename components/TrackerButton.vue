@@ -1,10 +1,9 @@
 <template>
-  <input @click="update" type="button" :value="_state" />
+  <input class="tracker" @click="update" type="button" :value="_state" />
 </template>
 
 <script>
 export default {
-  props: ["person", "weapon", "room"],
   data() {
     return {
       // 0 - don't know anything
@@ -40,7 +39,7 @@ export default {
 </script>
 
 <style scoped>
-input {
+input.tracker {
   position: relative;
   width: 3rem;
   height: 100%;
@@ -51,15 +50,15 @@ input {
   line-height: 24px;
   appearance: none;
 }
-input:active {
+input.tracker:active {
   top: 1px;
 }
-.page.light input {
+.page.light input.tracker {
   color: var(--black);
   border-color: var(--black);
   background-color: #ddd;
 }
-.page.dark input {
+.page.dark input.tracker {
   color: var(--white);
   border-color: var(--white);
   background-color: rgb(34, 34, 34);

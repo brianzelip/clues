@@ -115,7 +115,10 @@ h6 {
   background-color: #ddd;
 }
 
-.mlauto {
+.mr-auto {
+  margin-right: auto;
+}
+.ml-auto {
   margin-left: auto;
 }
 
@@ -130,10 +133,6 @@ h6 {
   background-color: inherit;
   font-size: 1.25rem;
   border: none;
-}
-
-.add {
-  /* margin-left: auto; */
 }
 
 .add:active,
@@ -246,4 +245,26 @@ h6 {
 
 .v-middle {
   vertical-align: middle;
+}
+
+/* People items */
+@media only screen and (min-width: 800px) {
+  .green::before {
+    content: 'Mr. ';
+  }
+  .mustard::before {
+    content: 'Colonel ';
+  }
+  .peacock::before {
+    content: 'Mrs. ';
+  }
+  .plum::before {
+    content: 'Professor ';
+  }
+  .scarlet::before {
+    content: 'Miss ';
+  }
+  .white::before {
+    content: 'Mrs. ';
+  }
 }

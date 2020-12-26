@@ -31,31 +31,30 @@
           </thead>
 
           <tbody>
-            <tr v-for="(p, i) in people" :key="`${p}-${i}`">
-              <Item :item="p"></Item>
-              <td v-for="n in numPlayers" :key="`${p}-${n}`">
-                <Button :person="p"></Button>
-                <MaybeCounter></MaybeCounter>
-              </td>
-            </tr>
+            <CardRow
+              v-for="(p, i) in people"
+              :key="`${p}-${i}`"
+              :card="p"
+              :numPlayers="numPlayers"
+            ></CardRow>
 
             <SpacerRow :num="numPlayers"></SpacerRow>
 
-            <tr v-for="(r, i) in rooms" :key="`${r}-${i}`">
-              <Item :item="r"></Item>
-              <td v-for="n in numPlayers" :key="`${r}-${n}`">
-                <Button :room="r"></Button>
-              </td>
-            </tr>
+            <CardRow
+              v-for="(r, i) in rooms"
+              :key="`${r}-${i}`"
+              :card="r"
+              :numPlayers="numPlayers"
+            ></CardRow>
 
             <SpacerRow :num="numPlayers"></SpacerRow>
 
-            <tr v-for="(w, i) in weapons" :key="`${w}-${i}`">
-              <Item :item="w"></Item>
-              <td v-for="n in numPlayers" :key="`${w}-${n}`">
-                <Button :weapon="w"></Button>
-              </td>
-            </tr>
+            <CardRow
+              v-for="(w, i) in weapons"
+              :key="`${w}-${i}`"
+              :card="w"
+              :numPlayers="numPlayers"
+            ></CardRow>
           </tbody>
         </table>
       </main>
@@ -67,20 +66,20 @@
 
 <script>
 import TheHeader from "./TheHeader.vue";
-import Item from "./Item.vue";
+import CardRow from "./CardRow.vue";
 import AddPlayerBtn from "./AddPlayerBtn.vue";
 import PlayerColHeader from "./PlayerColHeader.vue";
-import Button from "./Button.vue";
+import TrackerButton from "./TrackerButton.vue";
 import SpacerRow from "./SpacerRow.vue";
 import TheFooter from "./TheFooter.vue";
 
 export default {
   components: {
     TheHeader,
-    Item,
+    CardRow,
     AddPlayerBtn,
     PlayerColHeader,
-    Button,
+    TrackerButton,
     SpacerRow,
     TheFooter,
   },
