@@ -8,14 +8,16 @@ export default {
     return {
       // 0 - don't know anything
       // 1 - maybe
-      // 2 - confirm not has card
-      // 3 - confirm has card
+      // 2 - maybe x2
+      // 3 - maybe x3
+      // 4 - confirm not has card
+      // 5 - confirm has card
       state: 0,
     };
   },
   methods: {
     update() {
-      if (this.state < 3) {
+      if (this.state < 5) {
         this.state++;
       } else {
         this.state = 0;
@@ -29,8 +31,12 @@ export default {
         : this.state == 1
         ? "?"
         : this.state == 2
-        ? "X"
+        ? "? x2"
         : this.state == 3
+        ? "? x3"
+        : this.state == 4
+        ? "X"
+        : this.state == 5
         ? "★"
         : " ";
     },
@@ -48,6 +54,7 @@ input.tracker {
   border: 1px solid;
   border-radius: 2px;
   line-height: 24px;
+  font-size: inherit;
   appearance: none;
 }
 input.tracker:active {

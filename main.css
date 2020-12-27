@@ -86,6 +86,10 @@ h6 {
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
+body {
+  font-size: 0.875rem;
+}
+
 .container {
   max-width: 1200px;
 }

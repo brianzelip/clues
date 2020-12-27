@@ -57,5 +57,6 @@ input {
   background-color: inherit;
   border: none;
   text-align: center;
+  font-size: inherit;
 }
 </style>

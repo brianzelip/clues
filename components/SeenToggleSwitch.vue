@@ -36,6 +36,10 @@ input.hidden {
   opacity: 0;
 }
 
+label {
+  color: var(--dark-grey);
+}
+
 svg {
   width: 25px;
   height: 20px;

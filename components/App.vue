@@ -7,16 +7,7 @@
         <table>
           <thead>
             <tr>
-              <th scope="col" class="v-middle">
-                <section class="mine">
-                  <span class="h5 regular" v-if="numPlayers > 0">mine</span>
-                  <AddPlayerBtn
-                    v-if="numPlayers == 0"
-                    v-on:add-player="addPlayer"
-                    :style="{ paddingTop: '10px', paddingBottom: '10px' }"
-                  ></AddPlayerBtn>
-                </section>
-              </th>
+              <CardColHeader :numPlayers="numPlayers"></CardColHeader>
               <th scope="col" v-for="(p, i) in players" :key="i">
                 <PlayerColHeader
                   :player="p"
@@ -66,6 +57,7 @@
 
 <script>
 import TheHeader from "./TheHeader.vue";
+import CardColHeader from "./CardColHeader.vue";
 import CardRow from "./CardRow.vue";
 import AddPlayerBtn from "./AddPlayerBtn.vue";
 import PlayerColHeader from "./PlayerColHeader.vue";
@@ -76,6 +68,7 @@ import TheFooter from "./TheFooter.vue";
 export default {
   components: {
     TheHeader,
+    CardColHeader,
     CardRow,
     AddPlayerBtn,
     PlayerColHeader,
@@ -88,12 +81,12 @@ export default {
       darkMode: false,
       players: ["Player 1"],
       people: [
-        "Colonel Mustard",
-        "Miss Scarlet",
-        "Professor Plum",
         "Mr. Green",
-        "Mrs. White",
+        "Colonel Mustard",
         "Mrs. Peacock",
+        "Professor Plum",
+        "Miss Scarlet",
+        "Mrs. White",
       ],
       rooms: [
         "Ballroom",
@@ -146,6 +139,7 @@ table {
   position: relative;
   border-radius: 3px;
   border-bottom: 0;
+  font-size: inherit;
 }
 
 thead th {
@@ -160,6 +154,7 @@ td {
   padding: 0.5rem;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  height: 100%;
 }
 
 td {
@@ -169,27 +164,5 @@ td {
 
 .spacer {
   height: 24px;
-}
-
-section.mine {
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  z-index: 10;
-}
-
-section.mine {
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  z-index: 10;
-}
-
-section.mine span {
-  appearance: none;
-  color: inherit;
-  background-color: inherit;
-  border: none;
-  text-align: center;
 }
 </style>

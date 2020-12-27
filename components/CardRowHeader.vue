@@ -1,6 +1,8 @@
 <template>
   <th scope="row">
-    <span @click="update()" :class="_spanState">{{ card }}</span>
+    <span @click="update()" :class="_spanState">{{
+      isPerson ? lastName(card) : card
+    }}</span>
     <label :for="`my-card-${card}`">
       <input @input="toggleMine" type="checkbox" :id="`my-card-${card}`" />
     </label>
@@ -13,6 +15,14 @@ export default {
   data() {
     return {
       spanState: 0,
+      people: [
+        "Mr. Green",
+        "Colonel Mustard",
+        "Mrs. Peacock",
+        "Professor Plum",
+        "Miss Scarlet",
+        "Mrs. White",
+      ],
     };
   },
   computed: {
@@ -25,6 +35,9 @@ export default {
         ? "circle"
         : "";
     },
+    isPerson() {
+      return this.people.includes(this.card);
+    },
   },
   methods: {
     update() {
@@ -33,6 +46,12 @@ export default {
       } else {
         this.spanState = 0;
       }
+    },
+    firstName(name) {
+      return name.split(" ")[0];
+    },
+    lastName(name) {
+      return name.split(" ")[1];
     },
     toggleMine() {
       this.$emit("toggle-mine");
