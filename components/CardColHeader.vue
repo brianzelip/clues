@@ -26,8 +26,6 @@ span {
   font-weight: 400;
   color: inherit;
   background-color: inherit;
-  padding-right: calc(0.5rem + 2px);
-  padding-left: calc(0.5rem + 2px);
 }
 </style>
 

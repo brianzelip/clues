@@ -61,25 +61,30 @@ export default {
 </script>
 
 <style scoped>
-th {
+th[scope="row"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding-left: 0;
 }
 span {
   display: inline-block;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  /* bigger padding on bigger viewport */
   border: 2px solid transparent;
+  padding-left: calc(0.25rem - 2px);
+  padding-right: calc(0.25rem - 2px);
   border-radius: 50%;
+}
+@media only screen and (min-width: 960px) {
+  span {
+    padding-left: calc(0.5rem - 2px);
+    padding-right: calc(0.5rem - 2px);
+  }
 }
 label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-right: 0.5rem;
   font-size: 0.875rem;
   font-weight: 400;
 }

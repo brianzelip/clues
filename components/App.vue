@@ -154,10 +154,16 @@ thead th {
 
 th,
 td {
-  padding: 0.5rem;
+  padding: 0.25rem;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   height: 100%;
+}
+@media only screen and (min-width: 960px) {
+  th,
+  td {
+    padding: 0.5rem;
+  }
 }
 
 td {
