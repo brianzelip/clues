@@ -1,8 +1,8 @@
 <template>
   <th scope="col" class="v-middle">
     <section class="card-wrapper">
-      <h2 class="m0 mr-auto h5 regular">Card</h2>
-      <span class="h5 regular" v-if="numPlayers > 0">mine</span>
+      <span>Card</span>
+      <span v-if="numPlayers > 0">mine</span>
       <AddPlayerBtn
         v-if="numPlayers == 0"
         v-on:add-player="addPlayer"
@@ -16,26 +16,18 @@
 .card-wrapper {
   position: relative;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  padding-right: calc(0.5rem + 2px);
-  padding-left: calc(0.5rem + 2px);
-  z-index: 10;
-}
-
-.card-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
   z-index: 10;
 }
 
 span {
-  appearance: none;
+  font-size: inherit;
+  font-weight: 400;
   color: inherit;
   background-color: inherit;
-  border: none;
-  text-align: center;
+  padding-right: calc(0.5rem + 2px);
+  padding-left: calc(0.5rem + 2px);
 }
 </style>
 

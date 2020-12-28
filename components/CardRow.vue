@@ -1,6 +1,10 @@
 <template>
   <tr>
-    <CardRowHeader :card="card" v-on:toggle-mine="toggleMine"></CardRowHeader>
+    <CardRowHeader
+      :card="card"
+      :numPlayers="numPlayers"
+      v-on:toggle-mine="toggleMine"
+    ></CardRowHeader>
     <td v-for="n in numPlayers" :key="`${card}-${n}`">
       <div class="flex flex-center">
         <TrackerButton></TrackerButton>

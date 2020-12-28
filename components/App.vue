@@ -7,7 +7,10 @@
         <table>
           <thead>
             <tr>
-              <CardColHeader :numPlayers="numPlayers"></CardColHeader>
+              <CardColHeader
+                :numPlayers="numPlayers"
+                v-on:add-player="addPlayer"
+              ></CardColHeader>
               <th scope="col" v-for="(p, i) in players" :key="i">
                 <PlayerColHeader
                   :player="p"

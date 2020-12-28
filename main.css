@@ -88,6 +88,12 @@ h6 {
 
 body {
   font-size: 0.875rem;
+  transition: 0.15s;
+}
+@media only screen and (min-width: 960px) {
+  body {
+    font-size: 1rem;
+  }
 }
 
 .container {

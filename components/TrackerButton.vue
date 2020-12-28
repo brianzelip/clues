@@ -53,9 +53,14 @@ input.tracker {
   padding: 0;
   border: 1px solid;
   border-radius: 2px;
-  line-height: 24px;
+  line-height: 21px;
   font-size: inherit;
   appearance: none;
+}
+@media only screen and (min-width: 960px) {
+  input.tracker {
+    line-height: 24px;
+  }
 }
 input.tracker:active {
   top: 1px;

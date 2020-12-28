@@ -3,7 +3,7 @@
     <span @click="update()" :class="_spanState">{{
       isPerson ? lastName(card) : card
     }}</span>
-    <label :for="`my-card-${card}`">
+    <label v-show="numPlayers > 0" :for="`my-card-${card}`">
       <input @input="toggleMine" type="checkbox" :id="`my-card-${card}`" />
     </label>
   </th>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  props: ["card"],
+  props: ["card", "numPlayers"],
   data() {
     return {
       spanState: 0,

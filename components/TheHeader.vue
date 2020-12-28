@@ -1,7 +1,10 @@
 <template>
   <header class="py3">
-    <section class="flex mb2">
-      <h1 class="m0">Clue clues 🔎</h1>
+    <section class="flex mb3">
+      <div>
+        <h1 class="m0">Clue clues 🔎</h1>
+        <p class="m0">Figure out whodunnit</p>
+      </div>
       <button @click="toggleColor" title="Dark/light mode">
         <svg viewBox="0 0 32 32" fill="currentcolor">
           <circle

@@ -9,7 +9,7 @@
     />
     <label class="flex flex-center" :for="`${card}-seen-player-${playerNum}`">
       <Unseen v-show="!seen"></Unseen>
-      <Seen v-show="seen"></Seen>
+      <Seen v-show="seen" class="seen"></Seen>
     </label>
   </section>
 </template>
@@ -44,5 +44,11 @@ svg {
   width: 25px;
   height: 20px;
   fill: currentColor;
+}
+.page.light .seen {
+  fill: var(--black);
+}
+.page.dark .seen {
+  fill: var(--white);
 }
 </style>
