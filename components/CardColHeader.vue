@@ -6,7 +6,6 @@
       <AddPlayerBtn
         v-if="numPlayers == 0"
         v-on:add-player="addPlayer"
-        :style="{ paddingTop: '10px', paddingBottom: '10px' }"
       ></AddPlayerBtn>
     </section>
   </th>

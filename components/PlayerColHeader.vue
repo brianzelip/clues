@@ -1,22 +1,24 @@
 <template>
-  <section>
-    <input
-      :class="{ 'ml-auto': index == numPlayers - 1 }"
-      type="text"
-      size="4"
-      v-model="player"
-      @input="updatePlayer()"
-    />
-    <RemovePlayerBtn
-      :player="player"
-      :class="{ 'mr-auto': index == numPlayers - 1 }"
-      v-on:remove-player="removePlayer()"
-    ></RemovePlayerBtn>
-    <AddPlayerBtn
-      v-if="index == numPlayers - 1"
-      v-on:add-player="addPlayer"
-    ></AddPlayerBtn>
-  </section>
+  <th scope="col" class="v-middle">
+    <section>
+      <input
+        :class="{ 'ml-auto': index == numPlayers - 1 }"
+        type="text"
+        size="4"
+        v-model="player"
+        @input="updatePlayer"
+      />
+      <RemovePlayerBtn
+        :player="player"
+        :class="{ 'mr-auto': index == numPlayers - 1 }"
+        v-on:remove-player="removePlayer"
+      ></RemovePlayerBtn>
+      <AddPlayerBtn
+        v-if="index == numPlayers - 1"
+        v-on:add-player="addPlayer"
+      ></AddPlayerBtn>
+    </section>
+  </th>
 </template>
 
 <script>
@@ -27,14 +29,14 @@ export default {
   props: ["player", "numPlayers", "index"],
   components: { RemovePlayerBtn, AddPlayerBtn },
   methods: {
+    addPlayer() {
+      this.$emit("add-player");
+    },
     updatePlayer() {
       this.$emit("update-player", {
         player: this.player,
         index: this.index,
       });
-    },
-    addPlayer() {
-      this.$emit("add-player");
     },
     removePlayer() {
       this.$emit("remove-player", this.index);
@@ -52,10 +54,11 @@ section {
 }
 
 input {
-  appearance: none;
+  height: auto;
+  padding: 0;
+  border: none;
   color: inherit;
   background-color: inherit;
-  border: none;
   text-align: center;
   font-size: inherit;
 }

@@ -5,24 +5,13 @@
 
       <main>
         <table>
-          <thead>
-            <tr>
-              <CardColHeader
-                :numPlayers="numPlayers"
-                v-on:add-player="addPlayer"
-              ></CardColHeader>
-              <th scope="col" v-for="(p, i) in players" :key="i">
-                <PlayerColHeader
-                  :player="p"
-                  :numPlayers="players.length"
-                  :index="i"
-                  v-on:add-player="addPlayer"
-                  v-on:remove-player="removePlayer"
-                  v-on:update-player="updatePlayer"
-                ></PlayerColHeader>
-              </th>
-            </tr>
-          </thead>
+          <TheTableHead
+            :players="players"
+            :numPlayers="numPlayers"
+            v-on:add-player="addPlayer"
+            v-on:remove-player="removePlayer"
+            v-on:update-player="updatePlayer"
+          ></TheTableHead>
 
           <tbody>
             <CardRow
@@ -60,6 +49,7 @@
 
 <script>
 import TheHeader from "./TheHeader.vue";
+import TheTableHead from "./TheTableHead.vue";
 import CardColHeader from "./CardColHeader.vue";
 import CardRow from "./CardRow.vue";
 import AddPlayerBtn from "./AddPlayerBtn.vue";
@@ -71,6 +61,7 @@ import TheFooter from "./TheFooter.vue";
 export default {
   components: {
     TheHeader,
+    TheTableHead,
     CardColHeader,
     CardRow,
     AddPlayerBtn,
@@ -143,13 +134,6 @@ table {
   border-radius: 3px;
   border-bottom: 0;
   font-size: inherit;
-}
-
-thead th {
-  position: sticky;
-  top: 0;
-  text-align: center;
-  z-index: 1;
 }
 
 th,
