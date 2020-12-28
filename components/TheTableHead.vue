@@ -41,6 +41,15 @@ export default {
 </script>
 
 <style scoped>
+thead {
+  height: 3rem;
+  transition: 0.15s;
+}
+@media only screen and (min-width: 960px) {
+  thead {
+    height: 3.5rem;
+  }
+}
 thead th {
   position: sticky;
   top: 0;
