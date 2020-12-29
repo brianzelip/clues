@@ -2,10 +2,10 @@
   <tr>
     <CardRowHeader
       :card="card"
-      :numPlayers="numPlayers"
+      :nPlayers="nPlayers"
       v-on:toggle-mine="toggleMine"
     ></CardRowHeader>
-    <td v-for="n in numPlayers" :key="`${card}-${n}`">
+    <td v-for="n in nPlayers" :key="`${card}-${n}`">
       <div class="flex flex-center">
         <TrackerButton></TrackerButton>
         <SeenToggleSwitch
@@ -25,7 +25,7 @@ import TrackerButton from "./TrackerButton.vue";
 import SeenToggleSwitch from "./SeenToggleSwitch.vue";
 
 export default {
-  props: ["card", "numPlayers"],
+  props: ["card", "nPlayers"],
   components: {
     CardRowHeader,
     TrackerButton,

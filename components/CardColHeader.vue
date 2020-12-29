@@ -2,9 +2,9 @@
   <th scope="col" class="v-middle">
     <section class="card-wrapper">
       <span>Card</span>
-      <span v-if="numPlayers > 0">mine</span>
+      <span v-if="nPlayers > 0">mine</span>
       <AddPlayerBtn
-        v-if="numPlayers == 0"
+        v-if="nPlayers == 0"
         v-on:add-player="addPlayer"
       ></AddPlayerBtn>
     </section>
@@ -32,7 +32,7 @@ span {
 import AddPlayerBtn from "./AddPlayerBtn.vue";
 
 export default {
-  props: ["numPlayers"],
+  props: ["nPlayers"],
   components: { AddPlayerBtn },
   methods: {
     addPlayer() {

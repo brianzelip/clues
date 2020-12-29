@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  props: ["index", "numPlayers"],
+  props: ["index", "nPlayers"],
   methods: {
     addPlayer() {
       this.$emit("add-player");

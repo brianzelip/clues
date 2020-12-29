@@ -2,7 +2,7 @@
   <th scope="col" class="v-middle">
     <section>
       <input
-        :class="{ 'ml-auto': index == numPlayers - 1 }"
+        :class="{ 'ml-auto': index == nPlayers - 1 }"
         type="text"
         size="4"
         v-model="player"
@@ -10,11 +10,11 @@
       />
       <RemovePlayerBtn
         :player="player"
-        :class="{ 'mr-auto': index == numPlayers - 1 }"
+        :class="{ 'mr-auto': index == nPlayers - 1 }"
         v-on:remove-player="removePlayer"
       ></RemovePlayerBtn>
       <AddPlayerBtn
-        v-if="index == numPlayers - 1"
+        v-if="index == nPlayers - 1"
         v-on:add-player="addPlayer"
       ></AddPlayerBtn>
     </section>
@@ -26,7 +26,7 @@ import RemovePlayerBtn from "./RemovePlayerBtn.vue";
 import AddPlayerBtn from "./AddPlayerBtn.vue";
 
 export default {
-  props: ["player", "numPlayers", "index"],
+  props: ["player", "nPlayers", "index"],
   components: { RemovePlayerBtn, AddPlayerBtn },
   methods: {
     addPlayer() {

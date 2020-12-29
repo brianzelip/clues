@@ -2,11 +2,11 @@
   <thead>
     <tr>
       <CardColHeader
-        :numPlayers="numPlayers"
+        :nPlayers="nPlayers"
         v-on:add-player="addPlayer"
       ></CardColHeader>
       <PlayerColHeader
-        :numPlayers="numPlayers"
+        :nPlayers="nPlayers"
         v-for="(p, i) in players"
         :player="p"
         :index="i"
@@ -24,7 +24,7 @@ import CardColHeader from "./CardColHeader.vue";
 import PlayerColHeader from "./PlayerColHeader.vue";
 
 export default {
-  props: ["players", "numPlayers"],
+  props: ["players", "nPlayers"],
   components: { CardColHeader, PlayerColHeader },
   methods: {
     addPlayer() {
