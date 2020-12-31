@@ -3,9 +3,7 @@
     <div class="container px2 pb2">
       <TheHeader v-on:toggle-color="toggleColor"></TheHeader>
 
-      <main>
-        <TheTable></TheTable>
-      </main>
+      <TheTable></TheTable>
 
       <TheFooter></TheFooter>
     </div>
@@ -32,6 +30,13 @@ export default {
     toggleColor() {
       this.darkMode = !this.darkMode;
     },
+  },
+  created() {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.querySelector("body").className = "dark";
+    } else {
+      document.querySelector("body").className = "light";
+    }
   },
 };
 </script>

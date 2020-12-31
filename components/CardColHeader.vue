@@ -1,5 +1,5 @@
 <template>
-  <th scope="col" class="v-middle">
+  <th scope="col" class="z2 v-middle">
     <section class="card-wrapper">
       <span>Card</span>
       <span v-if="nPlayers > 0">mine</span>
@@ -17,7 +17,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 10;
 }
 
 span {

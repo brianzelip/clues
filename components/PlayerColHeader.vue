@@ -50,7 +50,6 @@ section {
   position: relative;
   display: flex;
   justify-content: center;
-  z-index: 10;
 }
 
 input {

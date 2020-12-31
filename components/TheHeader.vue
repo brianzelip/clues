@@ -39,9 +39,20 @@ export default {
       dark: false,
     };
   },
+  computed: {
+    mode() {
+      return this.dark != undefined && this.dark
+        ? "dark"
+        : this.dark != undefined && !this.dark
+        ? "light"
+        : "";
+    },
+  },
   methods: {
     toggleColor() {
+      this.dark = !this.dark;
       this.$emit("toggle-color", this.dark);
+      document.querySelector("body").className = this.mode;
     },
   },
 };

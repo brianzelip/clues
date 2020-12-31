@@ -1,6 +1,6 @@
 <template>
   <tr class="spacer">
-    <th></th>
+    <th scope="row"></th>
     <td v-for="n in nPlayers" :key="n"></td>
   </tr>
 </template>

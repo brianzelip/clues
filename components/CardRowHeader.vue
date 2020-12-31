@@ -1,11 +1,13 @@
 <template>
   <th scope="row">
-    <span @click="update()" :class="_spanState">{{
-      isPerson ? lastName(card) : card
-    }}</span>
-    <label v-show="nPlayers > 0" :for="`my-card-${card}`">
-      <input @input="toggleMine" type="checkbox" :id="`my-card-${card}`" />
-    </label>
+    <section>
+      <span @click="update()" :class="_spanState">{{
+        isPerson ? lastName(card) : card
+      }}</span>
+      <label v-show="nPlayers > 0" :for="`my-card-${card}`">
+        <input @input="toggleMine" type="checkbox" :id="`my-card-${card}`" />
+      </label>
+    </section>
   </th>
 </template>
 
@@ -61,7 +63,8 @@ export default {
 </script>
 
 <style scoped>
-th[scope="row"] {
+section {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;

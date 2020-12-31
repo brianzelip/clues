@@ -55,6 +55,7 @@ input.tracker {
   border-radius: 2px;
   line-height: 21px;
   font-size: inherit;
+  color: inherit;
   appearance: none;
 }
 @media only screen and (min-width: 960px) {
@@ -64,15 +65,5 @@ input.tracker {
 }
 input.tracker:active {
   top: 1px;
-}
-.page.light input.tracker {
-  color: var(--black);
-  border-color: var(--black);
-  background-color: #ddd;
-}
-.page.dark input.tracker {
-  color: var(--white);
-  border-color: var(--white);
-  background-color: rgb(34, 34, 34);
 }
 </style>

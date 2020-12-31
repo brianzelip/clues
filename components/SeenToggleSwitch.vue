@@ -8,7 +8,7 @@
       :name="`${card}-seen-player-${playerNum}`"
     />
     <label class="flex flex-center" :for="`${card}-seen-player-${playerNum}`">
-      <Unseen v-show="!seen"></Unseen>
+      <Unseen class="unseen" v-show="!seen"></Unseen>
       <Seen v-show="seen" class="seen"></Seen>
     </label>
   </section>
@@ -36,19 +36,8 @@ input.hidden {
   opacity: 0;
 }
 
-label {
-  color: var(--dark-grey);
-}
-
 svg {
   width: 25px;
   height: 20px;
-  fill: currentColor;
-}
-.page.light .seen {
-  fill: var(--black);
-}
-.page.dark .seen {
-  fill: var(--white);
 }
 </style>
