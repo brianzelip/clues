@@ -1,6 +1,7 @@
 <template>
   <tr>
     <CardRowHeader
+      :cardSliceIndex="cardSliceIndex"
       :card="card"
       :nPlayers="nPlayers"
       v-on:toggle-mine="toggleMine"
@@ -25,7 +26,7 @@ import TrackerButton from "./TrackerButton.vue";
 import SeenToggleSwitch from "./SeenToggleSwitch.vue";
 
 export default {
-  props: ["card", "nPlayers"],
+  props: ["card", "nPlayers", "cardSliceIndex"],
   components: {
     CardRowHeader,
     TrackerButton,

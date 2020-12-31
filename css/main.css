@@ -1,0 +1,144 @@
+@import 'palette.css';
+
+/*
+ * Border box by Tachyons - https://tachyons.io
+ */
+
+html,
+body,
+div,
+article,
+section,
+main,
+footer,
+header,
+form,
+fieldset,
+legend,
+pre,
+code,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+textarea,
+table,
+td,
+th,
+tr,
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='tel'],
+input[type='text'],
+input[type='url'],
+.border-box {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.vh100 {
+  min-height: 100vh;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+body {
+  font-size: 0.875rem;
+  transition: 0.15s;
+}
+@media only screen and (min-width: 960px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+}
+
+.circle {
+  border-color: inherit;
+}
+
+.bg-mustard {
+  background-color: #ffdb58;
+}
+.bg-scarlet {
+  background-color: #ff2400;
+}
+.bg-plum {
+  background-color: plum;
+}
+.bg-peacock {
+  background-color: #33a1c9;
+}
+.bg-gray {
+  background-color: #ddd;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+.ml-auto {
+  margin-left: auto;
+}
+
+/* Add/remove buttons */
+
+.add,
+.remove {
+  position: relative;
+  display: flex;
+  align-items: center;
+  appearance: none;
+  background-color: inherit;
+  font-size: 1.25rem;
+  border: none;
+}
+
+.add:active,
+.remove:active {
+  top: 1px;
+}
+
+.add svg,
+.remove svg {
+  width: 0.75rem;
+  transition: 0.15s;
+}
+
+.remove svg.rotate {
+  transform: rotate(45deg);
+}
+
+.v-middle {
+  vertical-align: middle;
+}
+
+@import './color-mode.css';

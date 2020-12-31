@@ -36,24 +36,28 @@ export default {
   components: { TheHelpDetails },
   data() {
     return {
-      dark: false,
+      dark: undefined,
     };
   },
   computed: {
-    mode() {
-      return this.dark != undefined && this.dark
-        ? "dark"
-        : this.dark != undefined && !this.dark
-        ? "light"
-        : "";
+    colorMode() {
+      return this.dark ? "dark" : "light";
     },
   },
   methods: {
     toggleColor() {
       this.dark = !this.dark;
-      this.$emit("toggle-color", this.dark);
-      document.querySelector("body").className = this.mode;
+      document.querySelector("body").className = this.colorMode;
     },
+  },
+  created() {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.querySelector("body").className = "dark";
+      this.dark = true;
+    } else {
+      document.querySelector("body").className = "light";
+      this.dark = false;
+    }
   },
 };
 </script>

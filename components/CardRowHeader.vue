@@ -1,11 +1,13 @@
 <template>
-  <th scope="row">
+  <th scope="row" class="regular">
     <section>
-      <span @click="update()" :class="_spanState">{{
-        isPerson ? lastName(card) : card
-      }}</span>
-      <label v-show="nPlayers > 0" :for="`my-card-${card}`">
-        <input @input="toggleMine" type="checkbox" :id="`my-card-${card}`" />
+      <span @click="update()" :class="_spanState">{{ card }}</span>
+      <label v-show="nPlayers > 0" :for="`my-card-${slicedCard}`">
+        <input
+          @input="toggleMine"
+          type="checkbox"
+          :id="`my-card-${slicedCard}`"
+        />
       </label>
     </section>
   </th>
@@ -13,18 +15,10 @@
 
 <script>
 export default {
-  props: ["card", "nPlayers"],
+  props: ["card", "nPlayers", "cardSliceIndex"],
   data() {
     return {
       spanState: 0,
-      people: [
-        "Mr. Green",
-        "Colonel Mustard",
-        "Mrs. Peacock",
-        "Professor Plum",
-        "Miss Scarlet",
-        "Mrs. White",
-      ],
     };
   },
   computed: {
@@ -37,8 +31,8 @@ export default {
         ? "circle"
         : "";
     },
-    isPerson() {
-      return this.people.includes(this.card);
+    slicedCard() {
+      return this.card.split(" ").slice()[Number(this.cardSliceIndex)];
     },
   },
   methods: {
@@ -48,12 +42,6 @@ export default {
       } else {
         this.spanState = 0;
       }
-    },
-    firstName(name) {
-      return name.split(" ")[0];
-    },
-    lastName(name) {
-      return name.split(" ")[1];
     },
     toggleMine() {
       this.$emit("toggle-mine");
@@ -73,17 +61,14 @@ section {
 }
 span {
   display: inline-block;
+  margin-left: -4px;
+  margin-right: -4px;
+  padding-right: 4px;
+  padding-left: 4px;
   border: 2px solid transparent;
-  padding-left: calc(0.25rem - 2px);
-  padding-right: calc(0.25rem - 2px);
   border-radius: 50%;
 }
-@media only screen and (min-width: 960px) {
-  span {
-    padding-left: calc(0.5rem - 2px);
-    padding-right: calc(0.5rem - 2px);
-  }
-}
+
 label {
   display: flex;
   flex-direction: column;

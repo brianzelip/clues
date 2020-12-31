@@ -1,0 +1,233 @@
+/* Dark/light mode */
+
+:root {
+  /**
+   * Primitives
+   */
+  --black-1: rgb(34, 34, 34);
+  --black-2: rgb(42, 42, 42);
+  --black-3: rgb(51, 51, 51); /* main text color */
+  --black-4: rgb(85, 85, 85); /* #555 */
+  --black-5: rgb(102, 102, 102);
+  --black-6: rgb(153, 153, 153); /* #999 */
+  --black-7: rgb(221, 221, 221); /* #ddd */
+  --black-8: rgb(239, 239, 239); /* #efefef */
+  --black-9: rgb(245, 245, 245);
+  --white: white;
+
+  --blue: #0074d9;
+  --green: #12b337;
+
+  /**
+   * UI light mode
+   */
+  --background-color--lightmode: var(--white);
+  --color--lightmode: var(--black-3);
+
+  --table-border-color--lightmode: var(--black-7);
+  --thead-th-background--lightmode: var(--black-7);
+  --tbody-th-background--lightmode: var(--background-color--lightmode);
+  --cell-border-color--lightmode: var(--black-7);
+  --th-border-color--lightmode: var(--cell-border-color--lightmode);
+  --td-border-color--lightmode: var(--cell-border-color--lightmode);
+  --tbody-th-circle-border-color--lightmode: var(--color--lightmode);
+  --tbody-th-strike-text-decoration--lightmode: var(--color--lightmode);
+
+  --th-svg-fill--lightmode: var(--black-6);
+  --th-svg-fill-hover--lightmode: var(--color--lightmode);
+
+  --button-border-color--lightmode: var(--color--lightmode);
+  --button-background--lightmode: var(--black-7);
+
+  --unseen-svg-fill--lightmode: var(--black-6);
+  --seen-svg-fill--lightmode: var(--color--lightmode);
+
+  --row-even-background--lightmode: var(--black-9);
+  --row-hover-background--lightmode: var(--black-8);
+
+  --link-color--lightmode: var(--blue);
+
+  /**
+   * UI dark mode
+   */
+  --background-color--darkmode: var(--black-3);
+  --color--darkmode: var(--white);
+
+  --table-border-color--darkmode: var(--black-1);
+  --thead-th-background--darkmode: var(--black-1);
+  --tbody-th-background--darkmode: var(--background-color--darkmode);
+  --cell-border-color--darkmode: var(--black-4);
+  --th-border-color--darkmode: var(--cell-border-color--darkmode);
+  --td-border-color--darkmode: var(--cell-border-color--darkmode);
+  --tbody-th-circle-border-color--darkmode: var(--color--darkmode);
+  --tbody-th-strike-text-decoration--darkmode: var(--color--darkmode);
+
+  --th-svg-fill--darkmode: var(--black-5);
+  --th-svg-fill-hover--darkmode: var(--color--darkmode);
+
+  --button-border-color--darkmode: var(--color--darkmode);
+  --button-background--darkmode: var(--black-1);
+
+  --unseen-svg-fill--darkmode: var(--black-6);
+  --seen-svg-fill--darkmode: var(--color--darkmode);
+
+  --row-even-background--darkmode: var(--black-2);
+  --row-hover-background--darkmode: var(--black-1);
+
+  --link-color--darkmode: var(--green);
+}
+
+/*
+ * LIGHT
+ */
+body.light {
+  background-color: var(--background-color--lightmode);
+  color: var(--color--lightmode);
+}
+
+body.light a {
+  color: var(--link-color--lightmode);
+}
+
+body.light .add svg,
+body.light .remove svg {
+  fill: var(--th-svg-fill--lightmode);
+}
+
+body.light .add:hover svg,
+body.light .remove:hover svg {
+  fill: var(--th-svg-fill-hover--lightmode);
+}
+
+body.light table {
+  border: 1px solid var(--table-border-color--lightmode);
+}
+
+body.light thead th {
+  color: var(--color--lightmode);
+  background-color: var(--thead-th-background--lightmode);
+}
+
+body.light tbody th {
+  background-color: var(--tbody-th-background--lightmode);
+}
+
+body.light tr:nth-child(even),
+body.light tr:nth-child(even) th {
+  background-color: var(--row-even-background--lightmode);
+}
+
+body.light tr:not(.spacer):hover {
+  background-color: var(--row-hover-background--lightmode);
+}
+body.light tbody tr:not(.spacer):hover th {
+  background-color: var(--row-hover-background--lightmode);
+}
+
+body.light td,
+body.light th {
+  color: inherit;
+  border-bottom-color: var(--cell-border-color--lightmode);
+}
+body.light td {
+  border-left-color: var(--cell-border-color--lightmode);
+}
+
+body.light .circle {
+  border-color: var(--tbody-th-circle-border-color--lightmode);
+}
+
+body.light .strike {
+  text-decoration-color: var(--tbody-th-strike-text-decoration--lightmode);
+}
+
+body.light input.tracker {
+  border-color: var(--button-border-color--lightmode);
+  background-color: var(--button-background--lightmode);
+}
+
+body.light .unseen {
+  fill: var(--unseen-svg-fill--lightmode);
+}
+
+body.light .seen {
+  fill: var(--seen-svg-fill--lightmode);
+}
+
+/*
+ * DARK
+ */
+
+body.dark {
+  background-color: var(--background-color--darkmode);
+  color: var(--color--darkmode);
+}
+
+body.dark a {
+  color: var(--link-color--darkmode);
+}
+
+body.dark .add svg,
+body.dark .remove svg {
+  fill: var(--th-svg-fill--darkmode);
+}
+
+body.dark .add:hover svg,
+body.dark .remove:hover svg {
+  fill: var(--th-svg-fill-hover--darkmode);
+}
+
+body.dark table {
+  border: 1px solid var(--table-border-color--darkmode);
+}
+
+body.dark thead th {
+  color: var(--color--darkmode);
+  background-color: var(--thead-th-background--darkmode);
+}
+
+body.dark tbody th {
+  background-color: var(--tbody-th-background--darkmode);
+}
+
+body.dark tr:nth-child(even),
+body.dark tr:nth-child(even) th {
+  background-color: var(--row-even-background--darkmode);
+}
+
+body.dark tr:not(.spacer):hover {
+  background-color: var(--row-hover-background--darkmode);
+}
+body.dark tbody tr:not(.spacer):hover th {
+  background-color: var(--row-hover-background--darkmode);
+}
+
+body.dark td,
+body.dark th {
+  color: inherit;
+  border-bottom-color: var(--cell-border-color--darkmode);
+}
+body.dark td {
+  border-left-color: var(--cell-border-color--darkmode);
+}
+
+body.dark .circle {
+  border-color: var(--tbody-th-circle-border-color--darkmode);
+}
+
+body.dark .strike {
+  text-decoration-color: var(--tbody-th-strike-text-decoration--darkmode);
+}
+
+body.dark input.tracker {
+  border-color: var(--button-border-color--darkmode);
+  background-color: var(--button-background--darkmode);
+}
+
+body.dark .unseen {
+  fill: var(--unseen-svg-fill--darkmode);
+}
+
+body.dark .seen {
+  fill: var(--seen-svg-fill--darkmode);
+}

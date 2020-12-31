@@ -11,6 +11,7 @@
 
       <tbody>
         <CardRow
+          :cardSliceIndex="peopleSliceIndex"
           v-for="(p, i) in people"
           :key="`${p}-${i}`"
           :card="p"
@@ -20,6 +21,7 @@
         <SpacerRow :nPlayers="nPlayers"></SpacerRow>
 
         <CardRow
+          :cardSliceIndex="roomsSliceIndex"
           v-for="(r, i) in rooms"
           :key="`${r}-${i}`"
           :card="r"
@@ -29,6 +31,7 @@
         <SpacerRow :nPlayers="nPlayers"></SpacerRow>
 
         <CardRow
+          :cardSliceIndex="weaponsSliceIndex"
           v-for="(w, i) in weapons"
           :key="`${w}-${i}`"
           :card="w"
@@ -48,15 +51,16 @@ export default {
   components: { TheTableHead, CardRow, SpacerRow },
   data() {
     return {
-      players: ["Player 1"],
+      players: ["Player1"],
       people: [
         "Mr. Green",
-        "Colonel Mustard",
+        "Col. Mustard",
         "Mrs. Peacock",
-        "Professor Plum",
-        "Miss Scarlet",
+        "Prof. Plum",
+        "Ms. Scarlet",
         "Mrs. White",
       ],
+      peopleSliceIndex: 1,
       rooms: [
         "Ballroom",
         "Billiard room",
@@ -68,6 +72,7 @@ export default {
         "Lounge",
         "Study",
       ],
+      roomsSliceIndex: 0,
       weapons: [
         "Candlestick",
         "Knife",
@@ -76,6 +81,7 @@ export default {
         "Rope",
         "Wrench",
       ],
+      weaponsSliceIndex: 0,
     };
   },
   computed: {
@@ -88,7 +94,7 @@ export default {
       this.players[obj.index] = obj.player;
     },
     addPlayer() {
-      this.players.push(`Player ${this.players.length + 1}`);
+      this.players.push(`Player${this.players.length + 1}`);
     },
     removePlayer(i) {
       const l = this.nPlayers;
