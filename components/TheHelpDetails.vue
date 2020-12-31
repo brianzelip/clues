@@ -2,6 +2,7 @@
   <details>
     <summary>Help</summary>
     <ol class="list-reset pt2 pl2 primary">
+      <li>Don't navigate away or refresh! Or else data loss 😦</li>
       <li>Click player name to edit.</li>
       <li>Click + to add player.</li>
       <li>Click x to remove player.</li>
