@@ -1,7 +1,7 @@
 <template>
   <button
     class="remove"
-    @click="removePlayer()"
+    @click="remove"
     type="button"
     :title="`Remove ${player}`"
   >
@@ -14,11 +14,14 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
-  props: ["player"],
+  props: ["player", "index"],
   methods: {
-    removePlayer() {
-      this.$emit("remove-player");
+    ...mapActions(["removePlayer"]),
+    remove() {
+      this.removePlayer(this.index);
     },
   },
 };

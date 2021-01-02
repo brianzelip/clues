@@ -1,13 +1,7 @@
 <template>
   <main>
     <table>
-      <TheTableHead
-        :players="players"
-        :nPlayers="nPlayers"
-        v-on:add-player="addPlayer"
-        v-on:remove-player="removePlayer"
-        v-on:update-player="updatePlayer"
-      ></TheTableHead>
+      <TheTableHead></TheTableHead>
 
       <tbody>
         <CardRow
@@ -43,65 +37,25 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from "vuex";
+
 import TheTableHead from "./TheTableHead.vue";
 import CardRow from "./CardRow.vue";
 import SpacerRow from "./SpacerRow.vue";
 
 export default {
   components: { TheTableHead, CardRow, SpacerRow },
-  data() {
-    return {
-      players: ["Player1"],
-      people: [
-        "Mr. Green",
-        "Col. Mustard",
-        "Mrs. Peacock",
-        "Prof. Plum",
-        "Ms. Scarlet",
-        "Mrs. White",
-      ],
-      peopleSliceIndex: 1,
-      rooms: [
-        "Ballroom",
-        "Billiard room",
-        "Conservatory",
-        "Dining room",
-        "Hall",
-        "Kitchen",
-        "Library",
-        "Lounge",
-        "Study",
-      ],
-      roomsSliceIndex: 0,
-      weapons: [
-        "Candlestick",
-        "Knife",
-        "Lead pipe",
-        "Pistol",
-        "Rope",
-        "Wrench",
-      ],
-      weaponsSliceIndex: 0,
-    };
-  },
   computed: {
-    nPlayers() {
-      return this.players.length;
-    },
-  },
-  methods: {
-    updatePlayer(obj) {
-      this.players[obj.index] = obj.player;
-    },
-    addPlayer() {
-      this.players.push(`Player${this.players.length + 1}`);
-    },
-    removePlayer(i) {
-      const l = this.nPlayers;
-      let start = this.players.slice(0, i);
-      let end = this.players.slice(i + 1);
-      this.players = [...start, ...end];
-    },
+    ...mapState([
+      "players",
+      "people",
+      "peopleSliceIndex",
+      "rooms",
+      "roomsSliceIndex",
+      "weapons",
+      "weaponsSliceIndex",
+    ]),
+    ...mapGetters(["nPlayers"]),
   },
 };
 </script>

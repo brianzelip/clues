@@ -3,10 +3,7 @@
     <section class="card-wrapper">
       <span>Card</span>
       <span v-if="nPlayers > 0">mine</span>
-      <AddPlayerBtn
-        v-if="nPlayers == 0"
-        v-on:add-player="addPlayer"
-      ></AddPlayerBtn>
+      <AddPlayerBtn v-if="nPlayers == 0"></AddPlayerBtn>
     </section>
   </th>
 </template>
@@ -28,15 +25,14 @@ span {
 </style>
 
 <script>
+import { mapGetters } from "vuex";
+
 import AddPlayerBtn from "./AddPlayerBtn.vue";
 
 export default {
-  props: ["nPlayers"],
   components: { AddPlayerBtn },
-  methods: {
-    addPlayer() {
-      this.$emit("add-player");
-    },
+  computed: {
+    ...mapGetters(["nPlayers"]),
   },
 };
 </script>

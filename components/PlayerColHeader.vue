@@ -6,40 +6,37 @@
         type="text"
         size="4"
         v-model="player"
-        @input="updatePlayer"
+        @input="update"
       />
       <RemovePlayerBtn
+        :index="index"
         :player="player"
         :class="{ 'mr-auto': index == nPlayers - 1 }"
-        v-on:remove-player="removePlayer"
       ></RemovePlayerBtn>
-      <AddPlayerBtn
-        v-if="index == nPlayers - 1"
-        v-on:add-player="addPlayer"
-      ></AddPlayerBtn>
+      <AddPlayerBtn v-if="index == nPlayers - 1"></AddPlayerBtn>
     </section>
   </th>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 import RemovePlayerBtn from "./RemovePlayerBtn.vue";
 import AddPlayerBtn from "./AddPlayerBtn.vue";
 
 export default {
-  props: ["player", "nPlayers", "index"],
+  props: ["player", "index"],
   components: { RemovePlayerBtn, AddPlayerBtn },
+  computed: {
+    ...mapGetters(["nPlayers"]),
+  },
   methods: {
-    addPlayer() {
-      this.$emit("add-player");
-    },
-    updatePlayer() {
-      this.$emit("update-player", {
+    ...mapActions(["updatePlayerName"]),
+    update() {
+      this.updatePlayerName({
         player: this.player,
         index: this.index,
       });
-    },
-    removePlayer() {
-      this.$emit("remove-player", this.index);
     },
   },
 };
