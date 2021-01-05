@@ -1,0 +1,55 @@
+/* Responsive card names */
+
+[data-card='green']::before {
+  content: '';
+}
+
+[data-card='mustard']::before {
+  content: '';
+}
+
+[data-card='peacock']::before,
+[data-card='white']::before {
+  content: '';
+}
+
+[data-card='plum']::before {
+  content: '';
+}
+
+[data-card='scarlet']::before {
+  content: '';
+}
+
+[data-card='billiard']::after,
+[data-card='dining']::after {
+  content: '';
+}
+
+@media only screen and (min-width: 960px) {
+  [data-card='green']::before {
+    content: 'Mr. ';
+  }
+
+  [data-card='mustard']::before {
+    content: 'Col. ';
+  }
+
+  [data-card='peacock']::before,
+  [data-card='white']::before {
+    content: 'Mrs. ';
+  }
+
+  [data-card='plum']::before {
+    content: 'Prof. ';
+  }
+
+  [data-card='scarlet']::before {
+    content: 'Ms. ';
+  }
+
+  [data-card='billiard']::after,
+  [data-card='dining']::after {
+    content: ' room';
+  }
+}

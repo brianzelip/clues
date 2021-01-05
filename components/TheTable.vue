@@ -5,31 +5,21 @@
 
       <tbody>
         <CardRow
-          :cardSliceIndex="peopleSliceIndex"
           v-for="(p, i) in people"
           :key="`${p}-${i}`"
           :card="p"
-          :nPlayers="nPlayers"
         ></CardRow>
 
         <SpacerRow :nPlayers="nPlayers"></SpacerRow>
 
-        <CardRow
-          :cardSliceIndex="roomsSliceIndex"
-          v-for="(r, i) in rooms"
-          :key="`${r}-${i}`"
-          :card="r"
-          :nPlayers="nPlayers"
-        ></CardRow>
+        <CardRow v-for="(r, i) in rooms" :key="`${r}-${i}`" :card="r"></CardRow>
 
         <SpacerRow :nPlayers="nPlayers"></SpacerRow>
 
         <CardRow
-          :cardSliceIndex="weaponsSliceIndex"
           v-for="(w, i) in weapons"
           :key="`${w}-${i}`"
           :card="w"
-          :nPlayers="nPlayers"
         ></CardRow>
       </tbody>
     </table>
@@ -37,7 +27,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 import TheTableHead from "./TheTableHead.vue";
 import CardRow from "./CardRow.vue";
@@ -46,16 +36,14 @@ import SpacerRow from "./SpacerRow.vue";
 export default {
   components: { TheTableHead, CardRow, SpacerRow },
   computed: {
-    ...mapState([
-      "players",
-      "people",
-      "peopleSliceIndex",
-      "rooms",
-      "roomsSliceIndex",
-      "weapons",
-      "weaponsSliceIndex",
-    ]),
-    ...mapGetters(["nPlayers"]),
+    ...mapState(["clues", "players", "people", "rooms", "weapons"]),
+    ...mapGetters(["nPlayers", "allCards"]),
+  },
+  methods: {
+    ...mapActions(["buildClues"]),
+  },
+  mounted() {
+    this.buildClues();
   },
 };
 </script>

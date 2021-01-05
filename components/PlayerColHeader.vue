@@ -5,7 +5,7 @@
         :class="{ 'ml-auto': index == nPlayers - 1 }"
         type="text"
         size="4"
-        v-model="player"
+        :value="player"
         @input="update"
       />
       <RemovePlayerBtn
@@ -19,24 +19,26 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 import RemovePlayerBtn from "./RemovePlayerBtn.vue";
 import AddPlayerBtn from "./AddPlayerBtn.vue";
 
 export default {
-  props: ["player", "index"],
+  props: ["index"],
   components: { RemovePlayerBtn, AddPlayerBtn },
   computed: {
+    ...mapState({
+      player(state) {
+        return state.players[this.index];
+      },
+    }),
     ...mapGetters(["nPlayers"]),
   },
   methods: {
-    ...mapActions(["updatePlayerName"]),
-    update() {
-      this.updatePlayerName({
-        player: this.player,
-        index: this.index,
-      });
+    ...mapActions(["updatePlayer"]),
+    update(e) {
+      this.updatePlayer({ index: this.index, player: e.target.value });
     },
   },
 };

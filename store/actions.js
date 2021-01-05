@@ -1,11 +1,29 @@
-export const addNewPlayer = ({ commit }, payload) => {
-  commit('ADD_NEW_PLAYER', payload);
+// Players
+export const addNewPlayer = ({ commit }) => {
+  commit('ADD_NEW_PLAYER');
 };
 
-export const updatePlayerName = ({ commit }, payload) => {
-  commit('UPDATE_PLAYER_NAME', payload);
+export const updatePlayer = ({ commit }, payload) => {
+  commit('UPDATE_PLAYER', payload);
 };
 
 export const removePlayer = ({ commit }, payload) => {
   commit('REMOVE_PLAYER', payload);
+};
+
+// Cards
+export const buildClues = ({ commit }) => {
+  commit('BUILD_CLUES');
+};
+
+export const updateCardWhodunnitState = ({ commit }, key) => {
+  commit('UPDATE_CARD_WHODUNNIT_STATE', key);
+};
+
+export const updatePlayerWhodunnitState = ({ commit }, key) => {
+  commit('UPDATE_PLAYER_WHODUNNIT_STATE', cardAndPlayerKeysObj);
+};
+
+export const toggleCardMine = ({ commit }, key) => {
+  commit('TOGGLE_CARD_MINE', key);
 };

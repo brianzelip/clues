@@ -1,12 +1,18 @@
 <template>
   <th scope="row" class="regular">
     <section>
-      <span @click="update()" :class="_spanState">{{ card }}</span>
-      <label v-show="nPlayers > 0" :for="`my-card-${slicedCard}`">
+      <span
+        @click="_updateCardSpanState"
+        :class="whodunnitClass"
+        :data-card="dataCardAttr"
+        >{{ cardDisplayName }}</span
+      >
+      <label v-show="nPlayers > 0" :for="`my-card-${cardDisplayName}`">
         <input
-          @input="toggleMine"
+          :value="mine"
+          @input="_toggleCardMine"
           type="checkbox"
-          :id="`my-card-${slicedCard}`"
+          :id="`my-card-${cardDisplayName}`"
         />
       </label>
     </section>
@@ -14,37 +20,35 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from "vuex";
+
 export default {
-  props: ["card", "nPlayers", "cardSliceIndex"],
-  data() {
-    return {
-      spanState: 0,
-    };
-  },
+  props: ["card"],
   computed: {
-    _spanState() {
-      return this.spanState == 0
-        ? ""
-        : this.spanState == 1
-        ? "strike"
-        : this.spanState == 2
-        ? "circle"
-        : "";
+    ...mapState(["clues"]),
+    ...mapGetters(["nPlayers"]),
+    cardDisplayName() {
+      return this.clues[this.card].displayName;
     },
-    slicedCard() {
-      return this.card.split(" ").slice()[Number(this.cardSliceIndex)];
+    whodunnitClass() {
+      let sS = this.clues[this.card].whodunnitCardState;
+
+      return sS == 0 ? "" : sS == 1 ? "strike" : sS == 2 ? "circle" : "";
+    },
+    dataCardAttr() {
+      return this.clues[this.card].dataCardAttr;
+    },
+    mine() {
+      return this.clues[this.card].mine;
     },
   },
   methods: {
-    update() {
-      if (this.spanState < 2) {
-        this.spanState++;
-      } else {
-        this.spanState = 0;
-      }
+    ...mapActions(["updateCardWhodunnitState", "toggleCardMine"]),
+    _updateCardSpanState() {
+      this.updateCardWhodunnitState(this.card);
     },
-    toggleMine() {
-      this.$emit("toggle-mine");
+    _toggleCardMine() {
+      this.toggleCardMine(this.card);
     },
   },
 };

@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  props: ["card", "player"],
   data() {
     return {
       // 0 - don't know anything

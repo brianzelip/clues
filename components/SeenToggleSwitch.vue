@@ -19,7 +19,7 @@ import Seen from "./Seen.vue";
 import Unseen from "./Unseen.vue";
 
 export default {
-  props: ["card", "playerNum"],
+  props: ["card", "player", "playerNum"],
   components: { Seen, Unseen },
   data() {
     return { seen: false };

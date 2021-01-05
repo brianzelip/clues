@@ -3,10 +3,9 @@
     <tr>
       <CardColHeader></CardColHeader>
       <PlayerColHeader
-        v-for="(p, i) in players"
-        :player="p"
+        v-for="(player, i) in players"
         :index="i"
-        :key="i"
+        :key="`player-${i}`"
       ></PlayerColHeader>
     </tr>
   </thead>

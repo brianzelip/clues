@@ -17,7 +17,7 @@
 import { mapActions } from "vuex";
 
 export default {
-  props: ["player", "index"],
+  props: ["index", "player"],
   methods: {
     ...mapActions(["removePlayer"]),
     remove() {

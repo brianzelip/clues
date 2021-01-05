@@ -1,18 +1,18 @@
 <template>
   <tr>
-    <CardRowHeader
-      :cardSliceIndex="cardSliceIndex"
-      :card="card"
-      :nPlayers="nPlayers"
-      v-on:toggle-mine="toggleMine"
-    ></CardRowHeader>
-    <td v-for="n in nPlayers" :key="`${card}-${n}`">
+    <CardRowHeader :card="card"></CardRowHeader>
+    <td v-for="(player, i) in players" :key="`${card}-${i}`">
       <div class="flex flex-center">
-        <TrackerButton></TrackerButton>
+        <TrackerButton
+          :card="card"
+          :player="player"
+          v-if="!mine"
+        ></TrackerButton>
         <SeenToggleSwitch
           v-if="mine"
           :card="card"
-          :playerNum="n"
+          :player="player"
+          :playerNum="i + 1"
           class="mx-auto"
         ></SeenToggleSwitch>
       </div>
@@ -21,21 +21,25 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from "vuex";
+
 import CardRowHeader from "./CardRowHeader.vue";
 import TrackerButton from "./TrackerButton.vue";
 import SeenToggleSwitch from "./SeenToggleSwitch.vue";
 
 export default {
-  props: ["card", "nPlayers", "cardSliceIndex"],
+  props: ["card"],
   components: {
     CardRowHeader,
     TrackerButton,
     SeenToggleSwitch,
   },
-  data() {
-    return {
-      mine: false,
-    };
+  computed: {
+    ...mapState(["clues", "players"]),
+    ...mapGetters(["nPlayers"]),
+    mine() {
+      return this.clues[this.card].mine;
+    },
   },
   methods: {
     toggleMine() {
