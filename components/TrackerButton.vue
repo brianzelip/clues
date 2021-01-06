@@ -50,7 +50,7 @@ input.tracker {
   position: relative;
   width: 3rem;
   height: 100%;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   border: 1px solid;
   border-radius: 2px;
@@ -61,6 +61,7 @@ input.tracker {
 }
 @media only screen and (min-width: 960px) {
   input.tracker {
+    width: 4rem;
     line-height: 24px;
   }
 }
