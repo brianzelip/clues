@@ -2,7 +2,7 @@
   <th scope="row" class="regular">
     <section>
       <span
-        @click="_updateCardSpanState"
+        @click="_updateCardWhodunnitState"
         :class="whodunnitClass"
         :data-card="dataCardAttr"
         >{{ cardDisplayName }}</span
@@ -31,9 +31,9 @@ export default {
       return this.clues[this.card].displayName;
     },
     whodunnitClass() {
-      let sS = this.clues[this.card].whodunnitCardState;
+      let wcs = this.clues[this.card].whodunnitCardState;
 
-      return sS == 0 ? "" : sS == 1 ? "strike" : sS == 2 ? "circle" : "";
+      return wcs == 0 ? "" : wcs == 1 ? "strike" : wcs == 2 ? "circle" : "";
     },
     dataCardAttr() {
       return this.clues[this.card].dataCardAttr;
@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     ...mapActions(["updateCardWhodunnitState", "toggleCardMine"]),
-    _updateCardSpanState() {
+    _updateCardWhodunnitState() {
       this.updateCardWhodunnitState(this.card);
     },
     _toggleCardMine() {

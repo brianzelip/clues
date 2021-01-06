@@ -8,6 +8,19 @@
   </th>
 </template>
 
+<script>
+import { mapGetters } from "vuex";
+
+import AddPlayerBtn from "./AddPlayerBtn.vue";
+
+export default {
+  components: { AddPlayerBtn },
+  computed: {
+    ...mapGetters(["nPlayers"]),
+  },
+};
+</script>
+
 <style scoped>
 .card-wrapper {
   position: relative;
@@ -23,16 +36,3 @@ span {
   background-color: inherit;
 }
 </style>
-
-<script>
-import { mapGetters } from "vuex";
-
-import AddPlayerBtn from "./AddPlayerBtn.vue";
-
-export default {
-  components: { AddPlayerBtn },
-  computed: {
-    ...mapGetters(["nPlayers"]),
-  },
-};
-</script>

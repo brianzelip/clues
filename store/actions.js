@@ -20,10 +20,6 @@ export const updateCardWhodunnitState = ({ commit }, key) => {
   commit('UPDATE_CARD_WHODUNNIT_STATE', key);
 };
 
-export const updatePlayerWhodunnitState = ({ commit }, key) => {
-  commit('UPDATE_PLAYER_WHODUNNIT_STATE', cardAndPlayerKeysObj);
-};
-
 export const toggleCardMine = ({ commit }, key) => {
   commit('TOGGLE_CARD_MINE', key);
 };

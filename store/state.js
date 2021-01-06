@@ -1,4 +1,31 @@
-export const players = ['Player1'];
+export const players = [
+  {
+    player: 'Player1',
+    cards: {
+      'Mr. Green': { hasItState: 0, seenMine: false },
+      'Col. Mustard': { hasItState: 0, seenMine: false },
+      'Mrs. Peacock': { hasItState: 0, seenMine: false },
+      'Prof. Plum': { hasItState: 0, seenMine: false },
+      'Ms. Scarlet': { hasItState: 0, seenMine: false },
+      'Mrs. White': { hasItState: 0, seenMine: false },
+      Ballroom: { hasItState: 0, seenMine: false },
+      'Billiard room': { hasItState: 0, seenMine: false },
+      Conservatory: { hasItState: 0, seenMine: false },
+      'Dining room': { hasItState: 0, seenMine: false },
+      Hall: { hasItState: 0, seenMine: false },
+      Kitchen: { hasItState: 0, seenMine: false },
+      Library: { hasItState: 0, seenMine: false },
+      Lounge: { hasItState: 0, seenMine: false },
+      Study: { hasItState: 0, seenMine: false },
+      Candlestick: { hasItState: 0, seenMine: false },
+      Knife: { hasItState: 0, seenMine: false },
+      'Lead pipe': { hasItState: 0, seenMine: false },
+      Pistol: { hasItState: 0, seenMine: false },
+      Rope: { hasItState: 0, seenMine: false },
+      Wrench: { hasItState: 0, seenMine: false }
+    }
+  }
+];
 
 export const cardOrder = ['people', 'rooms', 'weapons'];
 
@@ -31,6 +58,42 @@ export const weapons = [
   'Rope',
   'Wrench'
 ];
+
+export function Cards(type) {
+  // @param type is either 'clues' or 'player'
+  const allCards = [...people, ...rooms, ...weapons];
+  function isGroup(card) {
+    return people.includes(card)
+      ? 'people'
+      : rooms.includes(card)
+      ? 'rooms'
+      : 'weapons';
+  }
+
+  if (type == 'clues') {
+    allCards.forEach((card) => {
+      this[card] = {
+        group: isGroup(card),
+        id: card,
+        displayName:
+          isGroup(card) == 'people'
+            ? card.split(' ')[1]
+            : isGroup(card) == 'rooms'
+            ? card.split(' ')[0]
+            : card,
+        dataCardAttr:
+          isGroup(card) == 'people'
+            ? `${card.split(' ')[1].toLowerCase()}`
+            : isGroup(card) == 'rooms'
+            ? `${card.split(' ')[0].toLowerCase()}`
+            : `${card.split(' ')[card.split(' ').length - 1].toLowerCase()}`,
+        mine: false,
+        whodunnitCardState: 0,
+        players: []
+      };
+    });
+  }
+}
 
 export const clues = {
   'Mr. Green': {

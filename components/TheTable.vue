@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 import TheTableHead from "./TheTableHead.vue";
 import CardRow from "./CardRow.vue";
@@ -36,14 +36,8 @@ import SpacerRow from "./SpacerRow.vue";
 export default {
   components: { TheTableHead, CardRow, SpacerRow },
   computed: {
-    ...mapState(["clues", "players", "people", "rooms", "weapons"]),
+    ...mapState(["clues", "people", "rooms", "weapons"]),
     ...mapGetters(["nPlayers", "allCards"]),
-  },
-  methods: {
-    ...mapActions(["buildClues"]),
-  },
-  mounted() {
-    this.buildClues();
   },
 };
 </script>

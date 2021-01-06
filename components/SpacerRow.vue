@@ -6,7 +6,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  props: ["nPlayers"],
+  computed: {
+    ...mapGetters(["nPlayers"]),
+  },
 };
 </script>
