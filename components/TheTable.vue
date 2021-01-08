@@ -36,7 +36,7 @@ import SpacerRow from "./SpacerRow.vue";
 export default {
   components: { TheTableHead, CardRow, SpacerRow },
   computed: {
-    ...mapState(["clues", "people", "rooms", "weapons"]),
+    ...mapState(["clues", "people", "rooms", "weapons", "test"]),
     ...mapGetters(["nPlayers", "allCards"]),
   },
 };

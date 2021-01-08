@@ -1,7 +1,5 @@
 import Vue from 'vue';
 
-function Cards() {}
-
 function Player() {
   this.player = 'Player1';
   this.cards = {
@@ -25,7 +23,7 @@ function Player() {
     'Lead pipe': { hasItState: 0, seenMine: false },
     Pistol: { hasItState: 0, seenMine: false },
     Rope: { hasItState: 0, seenMine: false },
-    Wrench: { hasItState: 0, seenMine: false }
+    Wrench: { hasItState: 0, seenMine: false },
   };
 }
 
@@ -37,12 +35,12 @@ export const ADD_NEW_PLAYER = (state) => {
 };
 
 export const UPDATE_PLAYER = (state, payload) => {
-  // update players[index] with player
+  // update players[index].player with player
   // payload = {index, player}
   const i = payload.index;
   const p = payload.player;
 
-  Vue.set(state.players[i], 'player', p);
+  Vue.set(state.players, i, p);
 };
 
 export const REMOVE_PLAYER = (state, index) => {
@@ -100,7 +98,7 @@ export const BUILD_CLUES = (state) => {
           : `${card.split(' ')[card.split(' ').length - 1].toLowerCase()}`,
       mine: false,
       whodunnitCardState: 0,
-      seen: []
+      seen: [],
     };
     return acc;
   }, {});

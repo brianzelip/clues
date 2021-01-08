@@ -14,12 +14,9 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
-  computed: {
-    ...mapGetters(["id"]),
-  },
   methods: {
     ...mapActions(["addNewPlayer"]),
   },

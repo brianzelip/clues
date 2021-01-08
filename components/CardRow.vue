@@ -1,7 +1,7 @@
 <template>
   <tr>
     <CardRowHeader :card="card"></CardRowHeader>
-    <td v-for="(player, i) in players" :key="`${card}-${i}`">
+    <td v-for="(player, i) in players" :key="`${card}-${i}`" class="v-middle">
       <div class="flex flex-center">
         <TrackerButton
           :card="card"

@@ -1,4 +1,83 @@
-export const players = [
+export const people = [
+  'Mr. Green',
+  'Col. Mustard',
+  'Mrs. Peacock',
+  'Prof. Plum',
+  'Ms. Scarlet',
+  'Mrs. White',
+];
+
+export const rooms = [
+  'Ballroom',
+  'Billiard room',
+  'Conservatory',
+  'Dining room',
+  'Hall',
+  'Kitchen',
+  'Library',
+  'Lounge',
+  'Study',
+];
+
+export const weapons = [
+  'Candlestick',
+  'Knife',
+  'Lead pipe',
+  'Pistol',
+  'Rope',
+  'Wrench',
+];
+
+export const cardOrder = ['people', 'rooms', 'weapons'];
+
+export function Cards() {
+  function isGroup(card) {
+    return people.includes(card)
+      ? 'people'
+      : rooms.includes(card)
+      ? 'rooms'
+      : 'weapons';
+  }
+
+  [...people, ...rooms, ...weapons].forEach((card) => {
+    this[card] = {
+      group: isGroup(card),
+      id: card,
+      displayName:
+        isGroup(card) == 'people'
+          ? card.split(' ')[1]
+          : isGroup(card) == 'rooms'
+          ? card.split(' ')[0]
+          : card,
+      dataCardAttr:
+        isGroup(card) == 'people'
+          ? `${card.split(' ')[1].toLowerCase()}`
+          : isGroup(card) == 'rooms'
+          ? `${card.split(' ')[0].toLowerCase()}`
+          : `${card.split(' ')[card.split(' ').length - 1].toLowerCase()}`,
+      mine: false,
+      whodunnitCardState: 0,
+      players: [],
+    };
+  });
+}
+
+export function Player(name) {
+  this.player = name;
+  this.cards = {};
+  console.log([...people]);
+  [...people, ...rooms, ...weapons].forEach((card) => {
+    this.cards[card] = { hasItState: 0, seenMine: false };
+  });
+}
+
+export function PlayerCards() {}
+
+const player1 = new Player('Player1');
+
+export const players = [player1];
+
+export const _players = [
   {
     player: 'Player1',
     cards: {
@@ -22,78 +101,10 @@ export const players = [
       'Lead pipe': { hasItState: 0, seenMine: false },
       Pistol: { hasItState: 0, seenMine: false },
       Rope: { hasItState: 0, seenMine: false },
-      Wrench: { hasItState: 0, seenMine: false }
-    }
-  }
+      Wrench: { hasItState: 0, seenMine: false },
+    },
+  },
 ];
-
-export const cardOrder = ['people', 'rooms', 'weapons'];
-
-export const people = [
-  'Mr. Green',
-  'Col. Mustard',
-  'Mrs. Peacock',
-  'Prof. Plum',
-  'Ms. Scarlet',
-  'Mrs. White'
-];
-
-export const rooms = [
-  'Ballroom',
-  'Billiard room',
-  'Conservatory',
-  'Dining room',
-  'Hall',
-  'Kitchen',
-  'Library',
-  'Lounge',
-  'Study'
-];
-
-export const weapons = [
-  'Candlestick',
-  'Knife',
-  'Lead pipe',
-  'Pistol',
-  'Rope',
-  'Wrench'
-];
-
-export function Cards(type) {
-  // @param type is either 'clues' or 'player'
-  const allCards = [...people, ...rooms, ...weapons];
-  function isGroup(card) {
-    return people.includes(card)
-      ? 'people'
-      : rooms.includes(card)
-      ? 'rooms'
-      : 'weapons';
-  }
-
-  if (type == 'clues') {
-    allCards.forEach((card) => {
-      this[card] = {
-        group: isGroup(card),
-        id: card,
-        displayName:
-          isGroup(card) == 'people'
-            ? card.split(' ')[1]
-            : isGroup(card) == 'rooms'
-            ? card.split(' ')[0]
-            : card,
-        dataCardAttr:
-          isGroup(card) == 'people'
-            ? `${card.split(' ')[1].toLowerCase()}`
-            : isGroup(card) == 'rooms'
-            ? `${card.split(' ')[0].toLowerCase()}`
-            : `${card.split(' ')[card.split(' ').length - 1].toLowerCase()}`,
-        mine: false,
-        whodunnitCardState: 0,
-        players: []
-      };
-    });
-  }
-}
 
 export const clues = {
   'Mr. Green': {
@@ -103,7 +114,7 @@ export const clues = {
     dataCardAttr: 'green',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   'Col. Mustard': {
     group: 'people',
@@ -112,7 +123,7 @@ export const clues = {
     dataCardAttr: 'mustard',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   'Mrs. Peacock': {
     group: 'people',
@@ -121,7 +132,7 @@ export const clues = {
     dataCardAttr: 'peacock',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   'Prof. Plum': {
     group: 'people',
@@ -130,7 +141,7 @@ export const clues = {
     dataCardAttr: 'plum',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   'Ms. Scarlet': {
     group: 'people',
@@ -139,7 +150,7 @@ export const clues = {
     dataCardAttr: 'scarlet',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   'Mrs. White': {
     group: 'people',
@@ -148,7 +159,7 @@ export const clues = {
     dataCardAttr: 'white',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Ballroom: {
     group: 'rooms',
@@ -157,7 +168,7 @@ export const clues = {
     dataCardAttr: 'ballroom',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   'Billiard room': {
     group: 'rooms',
@@ -166,7 +177,7 @@ export const clues = {
     dataCardAttr: 'billiard',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Conservatory: {
     group: 'rooms',
@@ -175,7 +186,7 @@ export const clues = {
     dataCardAttr: 'conservatory',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   'Dining room': {
     group: 'rooms',
@@ -184,7 +195,7 @@ export const clues = {
     dataCardAttr: 'dining',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Hall: {
     group: 'rooms',
@@ -193,7 +204,7 @@ export const clues = {
     dataCardAttr: 'hall',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Kitchen: {
     group: 'rooms',
@@ -202,7 +213,7 @@ export const clues = {
     dataCardAttr: 'kitchen',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Library: {
     group: 'rooms',
@@ -211,7 +222,7 @@ export const clues = {
     dataCardAttr: 'library',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Lounge: {
     group: 'rooms',
@@ -220,7 +231,7 @@ export const clues = {
     dataCardAttr: 'lounge',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Study: {
     group: 'rooms',
@@ -229,7 +240,7 @@ export const clues = {
     dataCardAttr: 'study',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Candlestick: {
     group: 'weapons',
@@ -238,7 +249,7 @@ export const clues = {
     dataCardAttr: 'candlestick',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Knife: {
     group: 'weapons',
@@ -247,7 +258,7 @@ export const clues = {
     dataCardAttr: 'knife',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   'Lead pipe': {
     group: 'weapons',
@@ -256,7 +267,7 @@ export const clues = {
     dataCardAttr: 'pipe',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Pistol: {
     group: 'weapons',
@@ -265,7 +276,7 @@ export const clues = {
     dataCardAttr: 'pistol',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Rope: {
     group: 'weapons',
@@ -274,7 +285,7 @@ export const clues = {
     dataCardAttr: 'rope',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
+    whodunnitCardState: 0,
   },
   Wrench: {
     group: 'weapons',
@@ -283,6 +294,6 @@ export const clues = {
     dataCardAttr: 'wrench',
     mine: false,
     seen: [],
-    whodunnitCardState: 0
-  }
+    whodunnitCardState: 0,
+  },
 };

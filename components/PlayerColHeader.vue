@@ -30,7 +30,7 @@ export default {
   computed: {
     ...mapState({
       player(state) {
-        return state.players[this.index].player;
+        return state.players[this.index];
       },
     }),
     ...mapGetters(["nPlayers"]),
