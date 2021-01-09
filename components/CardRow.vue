@@ -35,10 +35,10 @@ export default {
     SeenToggleSwitch,
   },
   computed: {
-    ...mapState(["clues", "players"]),
+    ...mapState(["cards", "players"]),
     ...mapGetters(["nPlayers"]),
     mine() {
-      return this.clues[this.card].mine;
+      return this.cards[this.card].mine;
     },
   },
   methods: {

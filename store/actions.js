@@ -3,12 +3,12 @@ export const addNewPlayer = ({ commit }) => {
   commit('ADD_NEW_PLAYER');
 };
 
-export const updatePlayer = ({ commit }, payload) => {
-  commit('UPDATE_PLAYER', payload);
+export const updatePlayer = ({ commit }, obj) => {
+  commit('UPDATE_PLAYER', obj);
 };
 
-export const removePlayer = ({ commit }, payload) => {
-  commit('REMOVE_PLAYER', payload);
+export const removePlayer = ({ commit }, index) => {
+  commit('REMOVE_PLAYER', index);
 };
 
 // Cards

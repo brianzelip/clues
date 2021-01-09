@@ -1,55 +1,55 @@
 /* Responsive card names */
 
-[data-card='green']::before {
+[data-card='Green']::before {
   content: '';
 }
 
-[data-card='mustard']::before {
+[data-card='Mustard']::before {
   content: '';
 }
 
-[data-card='peacock']::before,
-[data-card='white']::before {
+[data-card='Peacock']::before,
+[data-card='White']::before {
   content: '';
 }
 
-[data-card='plum']::before {
+[data-card='Plum']::before {
   content: '';
 }
 
-[data-card='scarlet']::before {
+[data-card='Scarlet']::before {
   content: '';
 }
 
-[data-card='billiard']::after,
-[data-card='dining']::after {
+[data-card='Billiard']::after,
+[data-card='Dining']::after {
   content: '';
 }
 
 @media only screen and (min-width: 960px) {
-  [data-card='green']::before {
+  [data-card='Green']::before {
     content: 'Mr. ';
   }
 
-  [data-card='mustard']::before {
+  [data-card='Mustard']::before {
     content: 'Col. ';
   }
 
-  [data-card='peacock']::before,
-  [data-card='white']::before {
+  [data-card='Peacock']::before,
+  [data-card='White']::before {
     content: 'Mrs. ';
   }
 
-  [data-card='plum']::before {
+  [data-card='Plum']::before {
     content: 'Prof. ';
   }
 
-  [data-card='scarlet']::before {
+  [data-card='Scarlet']::before {
     content: 'Ms. ';
   }
 
-  [data-card='billiard']::after,
-  [data-card='dining']::after {
+  [data-card='Billiard']::after,
+  [data-card='Dining']::after {
     content: ' room';
   }
 }

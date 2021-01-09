@@ -1,46 +1,21 @@
 import Vue from 'vue';
 
-function Player() {
-  this.player = 'Player1';
-  this.cards = {
-    'Mr. Green': { hasItState: 0, seenMine: false },
-    'Col. Mustard': { hasItState: 0, seenMine: false },
-    'Mrs. Peacock': { hasItState: 0, seenMine: false },
-    'Prof. Plum': { hasItState: 0, seenMine: false },
-    'Ms. Scarlet': { hasItState: 0, seenMine: false },
-    'Mrs. White': { hasItState: 0, seenMine: false },
-    Ballroom: { hasItState: 0, seenMine: false },
-    'Billiard room': { hasItState: 0, seenMine: false },
-    Conservatory: { hasItState: 0, seenMine: false },
-    'Dining room': { hasItState: 0, seenMine: false },
-    Hall: { hasItState: 0, seenMine: false },
-    Kitchen: { hasItState: 0, seenMine: false },
-    Library: { hasItState: 0, seenMine: false },
-    Lounge: { hasItState: 0, seenMine: false },
-    Study: { hasItState: 0, seenMine: false },
-    Candlestick: { hasItState: 0, seenMine: false },
-    Knife: { hasItState: 0, seenMine: false },
-    'Lead pipe': { hasItState: 0, seenMine: false },
-    Pistol: { hasItState: 0, seenMine: false },
-    Rope: { hasItState: 0, seenMine: false },
-    Wrench: { hasItState: 0, seenMine: false },
-  };
-}
-
-// PLAYER CRUD
+// Player CRUD
 export const ADD_NEW_PLAYER = (state) => {
+  const index = state.players.length;
   const name = `Player${state.players.length + 1}`;
+  const player = state.Player(name);
 
-  Vue.set(state.players, state.players.length, name);
+  Vue.set(state.players, index, player);
 };
 
-export const UPDATE_PLAYER = (state, payload) => {
+export const UPDATE_PLAYER = (state, obj) => {
   // update players[index].player with player
-  // payload = {index, player}
-  const i = payload.index;
-  const p = payload.player;
+  // obj = {index, player}
+  const i = obj.index;
+  const p = obj.player;
 
-  Vue.set(state.players, i, p);
+  Vue.set(state.players[i], 'player', p);
 };
 
 export const REMOVE_PLAYER = (state, index) => {
@@ -51,57 +26,19 @@ export const REMOVE_PLAYER = (state, index) => {
   Vue.set(state, 'players', newPlayerList);
 };
 
-// CLUES
+// Card CRUD
 export const UPDATE_CARD_WHODUNNIT_STATE = (state, key) => {
-  const wcs = state.clues[key].whodunnitCardState;
+  const wcs = state.cards[key].whodunnitCardState;
 
   if (wcs < 2) {
-    Vue.set(state.clues[key], 'whodunnitCardState', wcs + 1);
+    Vue.set(state.cards[key], 'whodunnitCardState', wcs + 1);
   } else {
-    Vue.set(state.clues[key], 'whodunnitCardState', 0);
+    Vue.set(state.cards[key], 'whodunnitCardState', 0);
   }
 };
 
 export const TOGGLE_CARD_MINE = (state, key) => {
-  const mine = state.clues[key].mine;
+  const mine = state.cards[key].mine;
 
-  Vue.set(state.clues[key], 'mine', !mine);
-};
-
-export const BUILD_CLUES = (state) => {
-  const allCards = [...state.people, ...state.rooms, ...state.weapons];
-  const isGroup = (card) => {
-    if (state.people.includes(card)) {
-      return 'people';
-    } else if (state.rooms.includes(card)) {
-      return 'rooms';
-    } else if (state.weapons.includes(card)) {
-      return 'weapons';
-    }
-  };
-
-  const clues = allCards.reduce((acc, card) => {
-    acc[card] = {
-      group: isGroup(card),
-      id: card,
-      displayName:
-        isGroup(card) == 'people'
-          ? `${card.split(' ')[1]}`
-          : isGroup(card) == 'rooms'
-          ? `${card.split(' ')[0]}`
-          : card,
-      dataCardAttr:
-        isGroup(card) == 'people'
-          ? `${card.split(' ')[1].toLowerCase()}`
-          : isGroup(card) == 'rooms'
-          ? `${card.split(' ')[0].toLowerCase()}`
-          : `${card.split(' ')[card.split(' ').length - 1].toLowerCase()}`,
-      mine: false,
-      whodunnitCardState: 0,
-      seen: [],
-    };
-    return acc;
-  }, {});
-
-  Vue.set(state, 'clues', clues);
+  Vue.set(state.cards[key], 'mine', !mine);
 };

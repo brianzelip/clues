@@ -4,7 +4,7 @@
       <span
         @click="_updateCardWhodunnitState"
         :class="whodunnitClass"
-        :data-card="dataCardAttr"
+        :data-card="cardDisplayName"
         >{{ cardDisplayName }}</span
       >
       <label v-show="nPlayers > 0" :for="`my-card-${cardDisplayName}`">
@@ -25,21 +25,18 @@ import { mapState, mapGetters, mapActions } from "vuex";
 export default {
   props: ["card"],
   computed: {
-    ...mapState(["clues"]),
+    ...mapState(["cards"]),
     ...mapGetters(["nPlayers"]),
     cardDisplayName() {
-      return this.clues[this.card].displayName;
-    },
-    whodunnitClass() {
-      let wcs = this.clues[this.card].whodunnitCardState;
-
-      return wcs == 0 ? "" : wcs == 1 ? "strike" : wcs == 2 ? "circle" : "";
-    },
-    dataCardAttr() {
-      return this.clues[this.card].dataCardAttr;
+      return this.cards[this.card].displayName;
     },
     mine() {
-      return this.clues[this.card].mine;
+      return this.cards[this.card].mine;
+    },
+    whodunnitClass() {
+      let wcs = this.cards[this.card].whodunnitCardState;
+
+      return wcs == 0 ? "" : wcs == 1 ? "strike" : wcs == 2 ? "circle" : "";
     },
   },
   methods: {

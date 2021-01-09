@@ -5,21 +5,25 @@
 
       <tbody>
         <CardRow
-          v-for="(p, i) in people"
-          :key="`${p}-${i}`"
-          :card="p"
+          v-for="(card, i) in CARDS.people"
+          :key="`${card}-${i}`"
+          :card="card"
         ></CardRow>
 
         <SpacerRow :nPlayers="nPlayers"></SpacerRow>
 
-        <CardRow v-for="(r, i) in rooms" :key="`${r}-${i}`" :card="r"></CardRow>
+        <CardRow
+          v-for="(card, i) in CARDS.rooms"
+          :key="`${card}-${i}`"
+          :card="card"
+        ></CardRow>
 
         <SpacerRow :nPlayers="nPlayers"></SpacerRow>
 
         <CardRow
-          v-for="(w, i) in weapons"
-          :key="`${w}-${i}`"
-          :card="w"
+          v-for="(card, i) in CARDS.weapons"
+          :key="`${card}-${i}`"
+          :card="card"
         ></CardRow>
       </tbody>
     </table>
@@ -36,8 +40,8 @@ import SpacerRow from "./SpacerRow.vue";
 export default {
   components: { TheTableHead, CardRow, SpacerRow },
   computed: {
-    ...mapState(["clues", "people", "rooms", "weapons", "test"]),
-    ...mapGetters(["nPlayers", "allCards"]),
+    ...mapState(["CARDS"]),
+    ...mapGetters(["nPlayers"]),
   },
 };
 </script>
@@ -46,8 +50,6 @@ export default {
 main {
   position: relative;
   max-width: 100%;
-  /* max-height: 100vh; */
-  /* overflow: scroll; */
 }
 table {
   position: relative;
@@ -56,14 +58,9 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   font-size: inherit;
-  /* overflow: scroll; */
 }
 
 thead {
-  /* position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  left: 0; */
   height: 3rem;
   z-index: 1;
   transition: 0.15s;
