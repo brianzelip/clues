@@ -26,6 +26,36 @@ export const REMOVE_PLAYER = (state, index) => {
   Vue.set(state, 'players', newPlayerList);
 };
 
+export const UPDATE_PLAYER_CARD_BTN = (state, obj) => {
+  // obj = {index, card}
+  // update state.players[index].cards[card].trackerBtn
+  const index = obj.index;
+  const card = obj.card;
+
+  if (state.players[index].cards[card].trackerBtn < 5) {
+    Vue.set(
+      state.players[index].cards[card],
+      'trackerBtn',
+      ++state.players[index].cards[card].trackerBtn
+    );
+  } else {
+    Vue.set(state.players[index].cards[card], 'trackerBtn', 0);
+  }
+};
+
+export const TOGGLE_PLAYER_CARD_SEEN = (state, obj) => {
+  // obj = {index, card}
+  // update state.players[index].cards[card].seenMine
+  const index = obj.index;
+  const card = obj.card;
+
+  Vue.set(
+    state.players[index].cards[card],
+    'seenMine',
+    !state.players[index].cards[card].seenMine
+  );
+};
+
 // Card CRUD
 export const UPDATE_CARD_WHODUNNIT_STATE = (state, key) => {
   const wcs = state.cards[key].whodunnitCardState;

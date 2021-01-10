@@ -1,13 +1,14 @@
 <template>
   <section>
     <input
-      class="hidden"
-      v-model="seen"
+      :value="seen"
+      @input="toggleSeen"
+      :id="`${card}-seen-player-${index + 1}`"
+      :name="`${card}-seen-player-${index + 1}`"
       type="checkbox"
-      :id="`${card}-seen-player-${playerNum}`"
-      :name="`${card}-seen-player-${playerNum}`"
+      class="hidden"
     />
-    <label class="flex flex-center" :for="`${card}-seen-player-${playerNum}`">
+    <label class="flex flex-center" :for="`${card}-seen-player-${index + 1}`">
       <Unseen class="unseen" v-show="!seen"></Unseen>
       <Seen v-show="seen" class="seen"></Seen>
     </label>
@@ -15,14 +16,25 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 import Seen from "./Seen.vue";
 import Unseen from "./Unseen.vue";
 
 export default {
-  props: ["card", "player", "playerNum"],
+  props: ["card", "index"],
   components: { Seen, Unseen },
-  data() {
-    return { seen: false };
+  computed: {
+    ...mapState(["cards", "players"]),
+    seen() {
+      return this.players[this.index].cards[this.card].seenMine;
+    },
+  },
+  methods: {
+    ...mapActions(["togglePlayerCardSeen"]),
+    toggleSeen() {
+      this.togglePlayerCardSeen({ card: this.card, index: this.index });
+    },
   },
 };
 </script>

@@ -1,45 +1,38 @@
 <template>
-  <input class="tracker" @click="update" type="button" :value="_state" />
+  <input class="tracker" @click="update" type="button" :value="state" />
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
-  props: ["card", "player"],
-  data() {
-    return {
-      // 0 - don't know anything
-      // 1 - maybe
-      // 2 - maybe x2
-      // 3 - maybe x3
-      // 4 - confirm not has card
-      // 5 - confirm has card
-      state: 0,
-    };
-  },
-  methods: {
-    update() {
-      if (this.state < 5) {
-        this.state++;
-      } else {
-        this.state = 0;
-      }
-    },
-  },
+  props: ["card", "index"],
   computed: {
-    _state() {
-      return this.state == 0
+    ...mapState(["players"]),
+    state() {
+      const state = this.players[this.index].cards[this.card].trackerBtn;
+      return state == 0 // don't know anything
         ? " "
-        : this.state == 1
+        : state == 1 // maybe
         ? "?"
-        : this.state == 2
+        : state == 2 // maybe x2
         ? "? x2"
-        : this.state == 3
+        : state == 3 // maybe x3
         ? "? x3"
-        : this.state == 4
+        : state == 4 // confirm not has card
         ? "X"
-        : this.state == 5
+        : state == 5 // confirm has card
         ? "★"
         : " ";
+    },
+  },
+  methods: {
+    ...mapActions(["updatePlayerCardBtn"]),
+    update() {
+      this.updatePlayerCardBtn({
+        index: this.index,
+        card: this.card,
+      });
     },
   },
 };

@@ -1,18 +1,13 @@
 <template>
   <tr>
     <CardRowHeader :card="card"></CardRowHeader>
-    <td v-for="(player, i) in players" :key="`${card}-${i}`" class="v-middle">
+    <td v-for="(n, i) in nPlayers" :key="`${card}-${i}`" class="v-middle">
       <div class="flex flex-center">
-        <TrackerButton
-          :card="card"
-          :player="player"
-          v-if="!mine"
-        ></TrackerButton>
+        <TrackerButton :card="card" :index="i" v-if="!mine"></TrackerButton>
         <SeenToggleSwitch
-          v-if="mine"
           :card="card"
-          :player="player"
-          :playerNum="i + 1"
+          :index="i"
+          v-if="mine"
           class="mx-auto"
         ></SeenToggleSwitch>
       </div>
@@ -35,15 +30,10 @@ export default {
     SeenToggleSwitch,
   },
   computed: {
-    ...mapState(["cards", "players"]),
+    ...mapState(["cards"]),
     ...mapGetters(["nPlayers"]),
     mine() {
       return this.cards[this.card].mine;
-    },
-  },
-  methods: {
-    toggleMine() {
-      this.mine = !this.mine;
     },
   },
 };

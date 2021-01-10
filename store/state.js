@@ -36,7 +36,7 @@ export const CARDS = {
 
 export const cardOrder = ['people', 'rooms', 'weapons'];
 
-// Clue trackers
+// Clue tracker object instances
 export const cards = Cards();
 
 export const players = [Player('Player1')];
@@ -74,9 +74,11 @@ export function Player(name) {
 function PlayerCards() {
   const playerCards = {};
 
+  // Create a set of cards per user; pretty clear and
+  // robust way to track clues, but perhaps a perf issue?
   cardOrder.forEach((group) => {
     CARDS[group].forEach((card) => {
-      playerCards[card] = { hasItState: 0, seenMine: false };
+      playerCards[card] = { trackerBtn: 0, seenMine: false };
     });
   });
 
