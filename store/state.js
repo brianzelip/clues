@@ -41,32 +41,26 @@ export const cardOrder = ['people', 'rooms', 'weapons'];
 // Should we write state to localStorage?
 export const storage = ls.storageAvailable();
 
-// Clue tracker object instances for game play
-// populate players via INIT_STATE mutation committed via App.vue
-//
-// should all this (localstorage check and sync to state,
-// or new default player) be done in state?!
-
+// Build cards and players state for game play
 let _cards;
 let _players;
 
 if (!storage) {
   _cards = Cards();
+  _players = [Player('Player1')];
 }
+
 if (storage && !ls.hasStoredState('cards')) {
   _cards = Cards();
   localStorage.setItem('cards', '');
 }
-if (storage && ls.hasStoredState('cards')) {
-  _cards = ls.cards();
-}
-
-if (!storage) {
-  _players = [Player('Player1')];
-}
 if (storage && !ls.hasStoredState('players')) {
   _players = [Player('Player1')];
   localStorage.setItem('players', '');
+}
+
+if (storage && ls.hasStoredState('cards')) {
+  _cards = ls.cards();
 }
 if (storage && ls.hasStoredState('cards')) {
   _players = ls.players();
@@ -75,7 +69,8 @@ if (storage && ls.hasStoredState('cards')) {
 export const cards = _cards;
 export const players = _players;
 
-// Clue tracker object generators
+// Helpers
+
 function Card(card, group) {
   return {
     group,
@@ -117,7 +112,6 @@ function PlayerCards() {
   return playerCards;
 }
 
-// Helpers
 function displayName(card, group) {
   return group == 'people'
     ? card.split(' ')[1]
