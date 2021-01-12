@@ -34,7 +34,7 @@ export default {
       return this.cards[this.card].mine;
     },
     whodunnitClass() {
-      let wcs = this.cards[this.card].whodunnitCardState;
+      let wcs = this.cards[this.card].whodunnitCardState || 0;
 
       return wcs == 0 ? "" : wcs == 1 ? "strike" : wcs == 2 ? "circle" : "";
     },

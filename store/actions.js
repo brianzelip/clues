@@ -31,3 +31,12 @@ export const updateCardWhodunnitState = ({ commit }, key) => {
 export const toggleCardMine = ({ commit }, key) => {
   commit('TOGGLE_CARD_MINE', key);
 };
+
+// localStorage
+export const initState = ({ commit }) => {
+  commit('INIT_STATE');
+};
+
+export const syncFromLocalStorage = ({ commit }, obj) => {
+  commit('SYNC_FROM_LOCAL_STORAGE', obj);
+};

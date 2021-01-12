@@ -33,7 +33,7 @@ export default {
     ...mapState(["cards"]),
     ...mapGetters(["nPlayers"]),
     mine() {
-      return this.cards[this.card].mine;
+      return this.cards[this.card].mine || false;
     },
   },
 };

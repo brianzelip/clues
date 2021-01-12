@@ -1,4 +1,10 @@
 import Vue from 'vue';
+import * as ls from './localStorage.js';
+
+// Initialize
+export const INIT_STATE = (state) => {
+  console.log('HI FROM MUTATIONS!', ls.storageAvailable());
+};
 
 // Player CRUD
 export const ADD_NEW_PLAYER = (state) => {
@@ -71,4 +77,30 @@ export const TOGGLE_CARD_MINE = (state, key) => {
   const mine = state.cards[key].mine;
 
   Vue.set(state.cards[key], 'mine', !mine);
+};
+
+// localStorage
+
+export const SYNC_FROM_LOCAL_STORAGE = (state, obj) => {
+  // obj = {players, cards}
+  // update state.players with players, state.cards with cards
+  const players = obj.players;
+  const cards = obj.cards;
+
+  Vue.set(state, 'players', players);
+  Vue.set(state, 'cards', cards);
+};
+
+export const INIT_STATE_2 = (state) => {
+  if (ls.storageAvailable()) {
+    console.log('localStorage available...');
+    // if (!localStorage.players && !localStorage.cards) {
+    //   ls.setEmptyVals();
+    // } else {
+    //   const players = ls.players();
+    //   const cards = ls.cards();
+
+    //   this.syncFromLocalStorage({ players, cards });
+    // }
+  }
 };

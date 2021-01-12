@@ -1,3 +1,5 @@
+import * as ls from './localStorage.js';
+
 /**
  * CARDS       = set of game card names
  * Cards       = set of Card objects
@@ -36,10 +38,42 @@ export const CARDS = {
 
 export const cardOrder = ['people', 'rooms', 'weapons'];
 
-// Clue tracker object instances
-export const cards = Cards();
+// Should we write state to localStorage?
+export const storage = ls.storageAvailable();
 
-export const players = [Player('Player1')];
+// Clue tracker object instances for game play
+// populate players via INIT_STATE mutation committed via App.vue
+//
+// should all this (localstorage check and sync to state,
+// or new default player) be done in state?!
+
+let _cards;
+let _players;
+
+if (!storage) {
+  _cards = Cards();
+}
+if (storage && !ls.hasStoredState('cards')) {
+  _cards = Cards();
+  localStorage.setItem('cards', '');
+}
+if (storage && ls.hasStoredState('cards')) {
+  _cards = ls.cards();
+}
+
+if (!storage) {
+  _players = [Player('Player1')];
+}
+if (storage && !ls.hasStoredState('players')) {
+  _players = [Player('Player1')];
+  localStorage.setItem('players', '');
+}
+if (storage && ls.hasStoredState('cards')) {
+  _players = ls.players();
+}
+
+export const cards = _cards;
+export const players = _players;
 
 // Clue tracker object generators
 function Card(card, group) {
@@ -52,7 +86,7 @@ function Card(card, group) {
   };
 }
 
-function Cards() {
+export function Cards() {
   const cards = {};
 
   cardOrder.forEach((group) => {
@@ -74,8 +108,6 @@ export function Player(name) {
 function PlayerCards() {
   const playerCards = {};
 
-  // Create a set of cards per user; pretty clear and
-  // robust way to track clues, but perhaps a perf issue?
   cardOrder.forEach((group) => {
     CARDS[group].forEach((card) => {
       playerCards[card] = { trackerBtn: 0, seenMine: false };
