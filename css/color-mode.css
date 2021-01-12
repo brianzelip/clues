@@ -24,6 +24,9 @@
   --background-color--lightmode: var(--white);
   --color--lightmode: var(--black-3);
 
+  --reset-button-svg-fill--lightmode: var(--th-svg-fill--lightmode);
+  --reset-button-svg-fill-hover--lightmode: var(--th-svg-fill-hover--lightmode);
+
   --table-border-color--lightmode: var(--black-7);
   --thead-th-background--lightmode: var(--black-7);
   --tbody-th-background--lightmode: var(--background-color--lightmode);
@@ -52,6 +55,9 @@
    */
   --background-color--darkmode: var(--black-3);
   --color--darkmode: var(--white);
+
+  --reset-button-svg-fill--darkmode: var(--th-svg-fill--darkmode);
+  --reset-button-svg-fill-hover--darkmode: var(--th-svg-fill-hover--darkmode);
 
   --table-border-color--darkmode: var(--black-1);
   --thead-th-background--darkmode: var(--black-1);
@@ -90,12 +96,14 @@ body.light a {
 }
 
 body.light .add svg,
-body.light .remove svg {
+body.light .remove svg,
+body.light .reset svg {
   fill: var(--th-svg-fill--lightmode);
 }
 
 body.light .add:hover svg,
-body.light .remove:hover svg {
+body.light .remove:hover svg,
+body.light .reset:hover svg {
   fill: var(--th-svg-fill-hover--lightmode);
 }
 
@@ -168,12 +176,14 @@ body.dark a {
 }
 
 body.dark .add svg,
-body.dark .remove svg {
+body.dark .remove svg,
+body.dark .reset svg {
   fill: var(--th-svg-fill--darkmode);
 }
 
 body.dark .add:hover svg,
-body.dark .remove:hover svg {
+body.dark .remove:hover svg,
+body.dark .reset:hover svg {
   fill: var(--th-svg-fill-hover--darkmode);
 }
 

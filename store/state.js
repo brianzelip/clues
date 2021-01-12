@@ -38,38 +38,41 @@ export const CARDS = {
 
 export const cardOrder = ['people', 'rooms', 'weapons'];
 
-// Should we write state to localStorage?
+// State
 export const storage = ls.storageAvailable();
 
-// Build cards and players state for game play
-let _cards;
-let _players;
-
-if (!storage) {
-  _cards = Cards();
-  _players = [Player('Player1')];
-}
-
-if (storage && !ls.hasStoredState('cards')) {
-  _cards = Cards();
-  localStorage.setItem('cards', '');
-}
-if (storage && !ls.hasStoredState('players')) {
-  _players = [Player('Player1')];
-  localStorage.setItem('players', '');
-}
-
-if (storage && ls.hasStoredState('cards')) {
-  _cards = ls.cards();
-}
-if (storage && ls.hasStoredState('cards')) {
-  _players = ls.players();
-}
-
-export const cards = _cards;
-export const players = _players;
+export const cards = initState().cards;
+export const players = initState().players;
 
 // Helpers
+function initState() {
+  // Init cards and players state from scratch or localStorage
+  let cards;
+  let players;
+
+  if (!ls.storageAvailable()) {
+    cards = Cards();
+    players = [Player('Player1')];
+  }
+
+  if (!ls.hasStoredState('cards')) {
+    cards = Cards();
+    localStorage.setItem('cards', '');
+  }
+  if (!ls.hasStoredState('players')) {
+    players = [Player('Player1')];
+    localStorage.setItem('players', '');
+  }
+
+  if (ls.hasStoredState('cards')) {
+    cards = ls.cards();
+  }
+  if (ls.hasStoredState('cards')) {
+    players = ls.players();
+  }
+
+  return { cards, players };
+}
 
 function Card(card, group) {
   return {

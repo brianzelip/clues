@@ -6,6 +6,8 @@ import * as getters from './getters';
 import * as actions from './actions';
 import * as mutations from './mutations';
 
+import { subscribe } from './localStorage.js';
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -13,6 +15,7 @@ const store = new Vuex.Store({
   getters,
   actions,
   mutations,
+  plugins: [subscribe]
 });
 
 export default store;

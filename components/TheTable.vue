@@ -1,33 +1,31 @@
 <template>
-  <main>
-    <table>
-      <TheTableHead></TheTableHead>
+  <table>
+    <TheTableHead></TheTableHead>
 
-      <tbody>
-        <CardRow
-          v-for="(card, i) in CARDS.people"
-          :key="`${card}-${i}`"
-          :card="card"
-        ></CardRow>
+    <tbody>
+      <CardRow
+        v-for="(card, i) in CARDS.people"
+        :key="`${card}-${i}`"
+        :card="card"
+      ></CardRow>
 
-        <SpacerRow :nPlayers="nPlayers"></SpacerRow>
+      <SpacerRow :nPlayers="nPlayers"></SpacerRow>
 
-        <CardRow
-          v-for="(card, i) in CARDS.rooms"
-          :key="`${card}-${i}`"
-          :card="card"
-        ></CardRow>
+      <CardRow
+        v-for="(card, i) in CARDS.rooms"
+        :key="`${card}-${i}`"
+        :card="card"
+      ></CardRow>
 
-        <SpacerRow :nPlayers="nPlayers"></SpacerRow>
+      <SpacerRow :nPlayers="nPlayers"></SpacerRow>
 
-        <CardRow
-          v-for="(card, i) in CARDS.weapons"
-          :key="`${card}-${i}`"
-          :card="card"
-        ></CardRow>
-      </tbody>
-    </table>
-  </main>
+      <CardRow
+        v-for="(card, i) in CARDS.weapons"
+        :key="`${card}-${i}`"
+        :card="card"
+      ></CardRow>
+    </tbody>
+  </table>
 </template>
 
 <script>
@@ -47,10 +45,6 @@ export default {
 </script>
 
 <style>
-main {
-  position: relative;
-  max-width: 100%;
-}
 table {
   position: relative;
   border-radius: 3px;

@@ -1,7 +1,7 @@
 <template>
   <section>
     <input
-      :value="seen"
+      :checked="seen"
       @input="toggleSeen"
       :id="`${card}-seen-player-${index + 1}`"
       :name="`${card}-seen-player-${index + 1}`"

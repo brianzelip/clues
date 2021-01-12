@@ -2,7 +2,9 @@
   <details>
     <summary>Help</summary>
     <ol class="list-reset pt2 pl2 primary">
-      <li>Don't navigate away or refresh! Or else data loss 😦</li>
+      <li v-if="!storage">
+        ⚠️ Your clues data will reset if you navigate away or refresh this page.
+      </li>
       <li>Click player name to edit.</li>
       <li>Click + to add player.</li>
       <li>Click x to remove player.</li>
@@ -19,11 +21,29 @@
           <li class="mb0">has card (★)</li>
         </ol>
       </li>
+      <li v-if="storage">
+        Click <span class="h2">↺</span> to reset clues. (Clues persist via the
+        browser's
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
+          >local storage</a
+        >, not the server.)
+      </li>
     </ol>
     <p class="m0 mb2"></p>
     <p class="m0"></p>
   </details>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  computed: {
+    ...mapState(["storage"]),
+  },
+};
+</script>
 
 <style scoped>
 .primary > li {

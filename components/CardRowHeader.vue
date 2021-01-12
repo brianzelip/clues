@@ -9,7 +9,7 @@
       >
       <label v-show="nPlayers > 0" :for="`my-card-${cardDisplayName}`">
         <input
-          :value="mine"
+          :checked="mine"
           @input="_toggleCardMine"
           type="checkbox"
           :id="`my-card-${cardDisplayName}`"

@@ -2,7 +2,9 @@
   <div class="container px2 pb2">
     <TheHeader></TheHeader>
 
-    <TheTable></TheTable>
+    <main>
+      <TheTable></TheTable>
+    </main>
 
     <TheFooter></TheFooter>
   </div>
@@ -21,3 +23,10 @@ export default {
   },
 };
 </script>
+
+<style>
+main {
+  position: relative;
+  max-width: 100%;
+}
+</style>

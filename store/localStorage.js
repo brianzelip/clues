@@ -10,11 +10,15 @@ export function cards() {
 }
 
 export function hasStoredState(state) {
+  if (!storageAvailable()) {
+    return false;
+  }
+
   if (!localStorage.getItem(state)) {
     return false;
   }
 
-  if (localStorage.getItem(state) == '') {
+  if (!localStorage.getItem(state).length >= 2) {
     return false;
   }
 
@@ -29,8 +33,7 @@ export function setEmptyVals() {
 export function resetStorage() {
   localStorage.clear();
 
-  localStorage.setItem('cards', '');
-  localStorage.setItem('players', '');
+  setEmptyVals();
 }
 
 export function storageAvailable() {
@@ -64,3 +67,20 @@ export function storageAvailable() {
     );
   }
 }
+
+// Subscribe to all mutations via plugins
+export const subscribe = (store) => {
+  // called when the store is initialized
+  if (storageAvailable()) {
+    store.subscribe((mutation, state) => {
+      if (mutation.type.includes('CARD')) {
+        localStorage.setItem('cards', JSON.stringify(state.cards));
+        console.log('state.cards was written to localStorage.cards');
+      }
+      if (mutation.type.includes('PLAYER')) {
+        localStorage.setItem('players', JSON.stringify(state.players));
+        console.log('state.players was written to localStorage.players');
+      }
+    });
+  }
+};

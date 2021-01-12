@@ -1,11 +1,11 @@
 <template>
   <header class="py3">
-    <section class="flex mb3">
+    <section class="header-top">
       <div>
         <h1 class="m0">Clue clues 🔎</h1>
         <p class="m0">Figure out whodunnit</p>
       </div>
-      <button @click="toggleColor" title="Dark/light mode">
+      <button class="theme" @click="toggleColor" title="Dark/light mode">
         <svg viewBox="0 0 32 32" fill="currentcolor">
           <circle
             cx="16"
@@ -25,15 +25,29 @@
         </svg>
       </button>
     </section>
-    <TheHelpDetails></TheHelpDetails>
+    <section class="header-bottom">
+      <TheHelpDetails></TheHelpDetails>
+      <button
+        v-if="defaultStateHasChanged"
+        class="reset"
+        @click="resetClues"
+        type="button"
+        title="Reset clues"
+      >
+        <TheResetSVG></TheResetSVG>
+      </button>
+    </section>
   </header>
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from "vuex";
+
 import TheHelpDetails from "./TheHelpDetails.vue";
+import TheResetSVG from "./TheResetSVG.vue";
 
 export default {
-  components: { TheHelpDetails },
+  components: { TheHelpDetails, TheResetSVG },
   data() {
     return {
       dark: undefined,
@@ -43,11 +57,17 @@ export default {
     colorMode() {
       return this.dark ? "dark" : "light";
     },
+    ...mapState(["storage"]),
+    ...mapGetters(["defaultStateHasChanged"]),
   },
   methods: {
+    ...mapActions(["resetCardsAndPlayers"]),
     toggleColor() {
       this.dark = !this.dark;
       document.querySelector("body").className = this.colorMode;
+    },
+    resetClues() {
+      this.resetCardsAndPlayers();
     },
   },
   created() {
@@ -63,12 +83,13 @@ export default {
 </script>
 
 <style scoped>
-section {
+.header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 2rem;
 }
-button {
+button.theme {
   display: flex;
   margin: 0px;
   padding: 4px;
@@ -80,11 +101,28 @@ button {
   background-color: transparent;
   color: inherit;
 }
-button:hover {
+button.theme:hover {
   box-shadow: 0px 0px 0px 3px;
 }
-svg {
+button.theme svg {
   display: block;
   width: 2rem;
+}
+
+.header-bottom {
+  display: flex;
+  align-items: flex-start;
+}
+
+button.reset {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 2.25rem;
+  margin-left: auto;
+  appearance: none;
+  background-color: inherit;
+  font-size: 1.25rem;
+  border: none;
 }
 </style>
