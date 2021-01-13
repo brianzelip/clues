@@ -26,9 +26,9 @@
       </button>
     </section>
     <section class="header-bottom">
-      <TheHelpDetails></TheHelpDetails>
+      <TheHelpDetails class="flex-grow"></TheHelpDetails>
       <button
-        v-if="defaultStateHasChanged"
+        :disabled="!defaultStateHasChanged"
         class="reset"
         @click="resetClues"
         type="button"
@@ -117,12 +117,18 @@ button.theme svg {
 button.reset {
   position: relative;
   display: flex;
-  align-items: center;
-  width: 2.25rem;
+  padding: 0 5px;
   margin-left: auto;
   appearance: none;
   background-color: inherit;
   font-size: 1.25rem;
   border: none;
+}
+button.reset:disabled svg {
+  fill: transparent;
+}
+button.reset svg {
+  width: 20px;
+  height: 20px;
 }
 </style>

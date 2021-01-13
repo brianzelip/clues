@@ -4,7 +4,7 @@
       <input
         :class="{ 'ml-auto': index == nPlayers - 1 }"
         type="text"
-        size="4"
+        :size="inputSize"
         :value="player"
         @input="update"
       />
@@ -34,6 +34,15 @@ export default {
       },
     }),
     ...mapGetters(["nPlayers"]),
+    inputSize() {
+      return this.player.length < 3
+        ? 2
+        : this.player.length < 6
+        ? 3
+        : this.player.length < 7
+        ? 5
+        : 6;
+    },
   },
   methods: {
     ...mapActions(["updatePlayer"]),
@@ -52,12 +61,13 @@ section {
 }
 
 input {
+  display: inline-block;
   height: auto;
   padding: 0;
   border: none;
   color: inherit;
   background-color: inherit;
-  text-align: center;
+  text-align: right;
   font-size: inherit;
 }
 </style>

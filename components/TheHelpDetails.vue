@@ -3,7 +3,7 @@
     <summary>Help</summary>
     <ol class="list-reset pt2 pl2 primary">
       <li v-if="!storage">
-        ⚠️ Your clues data will reset if you navigate away or refresh this page.
+        ⚠️ Your clues will reset if you navigate away or refresh this page.
       </li>
       <li>Click player name to edit.</li>
       <li>Click + to add player.</li>
@@ -22,12 +22,8 @@
         </ol>
       </li>
       <li v-if="storage">
-        Click <span class="h2">↺</span> to reset clues. (Clues persist via the
-        browser's
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
-          >local storage</a
-        >, not the server.)
+        Click <span class="h2">↺</span> to reset clues.
+        <i>Data stored in the browser, not on the server</i>.
       </li>
     </ol>
     <p class="m0 mb2"></p>
