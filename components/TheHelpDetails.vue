@@ -2,7 +2,7 @@
   <details>
     <summary>Help</summary>
     <ol class="list-reset pt2 pl2 primary">
-      <li v-if="!storage">
+      <li v-if="!hasStorage">
         ⚠️ Your clues will reset if you navigate away or refresh this page.
       </li>
       <li>Click player name to edit.</li>
@@ -21,13 +21,11 @@
           <li class="mb0">has card (★)</li>
         </ol>
       </li>
-      <li v-if="storage">
+      <li v-if="hasStorage">
         Click <span class="h2">↺</span> to reset clues.
-        <i>Data stored in the browser, not on the server</i>.
+        <i>Data is stored in the browser, not on the server</i>.
       </li>
     </ol>
-    <p class="m0 mb2"></p>
-    <p class="m0"></p>
   </details>
 </template>
 
@@ -36,7 +34,7 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["storage"]),
+    ...mapState(["hasStorage"]),
   },
 };
 </script>

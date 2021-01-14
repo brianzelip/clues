@@ -5,7 +5,7 @@
         <h1 class="m0">Clue clues 🔎</h1>
         <p class="m0">Figure out whodunnit</p>
       </div>
-      <button class="theme" @click="toggleColor" title="Dark/light mode">
+      <button class="theme" @click="toggleTheme" title="Dark/light mode">
         <svg viewBox="0 0 32 32" fill="currentcolor">
           <circle
             cx="16"
@@ -48,36 +48,15 @@ import TheResetSVG from "./TheResetSVG.vue";
 
 export default {
   components: { TheHelpDetails, TheResetSVG },
-  data() {
-    return {
-      dark: undefined,
-    };
-  },
   computed: {
-    colorMode() {
-      return this.dark ? "dark" : "light";
-    },
-    ...mapState(["storage"]),
+    ...mapState(["hasStorage"]),
     ...mapGetters(["defaultStateHasChanged"]),
   },
   methods: {
-    ...mapActions(["resetCardsAndPlayers"]),
-    toggleColor() {
-      this.dark = !this.dark;
-      document.querySelector("body").className = this.colorMode;
-    },
+    ...mapActions(["toggleTheme", "resetCardsAndPlayers"]),
     resetClues() {
       this.resetCardsAndPlayers();
     },
-  },
-  created() {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      document.querySelector("body").className = "dark";
-      this.dark = true;
-    } else {
-      document.querySelector("body").className = "light";
-      this.dark = false;
-    }
   },
 };
 </script>

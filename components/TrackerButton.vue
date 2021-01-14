@@ -27,9 +27,9 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["updatePlayerCardBtn"]),
+    ...mapActions(["updatePlayerTrackerBtn"]),
     update() {
-      this.updatePlayerCardBtn({
+      this.updatePlayerTrackerBtn({
         index: this.index,
         card: this.card,
       });

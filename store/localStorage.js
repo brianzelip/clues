@@ -1,3 +1,7 @@
+export function theme() {
+  return localStorage.getItem('theme');
+}
+
 export function players() {
   const players = localStorage.getItem('players');
 
@@ -68,7 +72,7 @@ export function storageAvailable() {
   }
 }
 
-// Subscribe to all mutations via plugins
+// Subscribe to all mutations via vuex plugin system
 export const subscribe = (store) => {
   // called when the store is initialized
   if (storageAvailable()) {
@@ -77,9 +81,15 @@ export const subscribe = (store) => {
         localStorage.setItem('cards', JSON.stringify(state.cards));
         console.log('state.cards was written to localStorage.cards');
       }
+
       if (mutation.type.includes('PLAYER')) {
         localStorage.setItem('players', JSON.stringify(state.players));
         console.log('state.players was written to localStorage.players');
+      }
+
+      if (mutation.type.includes('THEME')) {
+        localStorage.setItem('theme', state.theme);
+        console.log('state.theme was written to localStorage.theme');
       }
     });
   }

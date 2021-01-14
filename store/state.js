@@ -12,6 +12,9 @@ import * as ls from './localStorage.js';
  * player      = player name string used in components
  */
 
+// Client
+export const hasStorage = ls.storageAvailable();
+
 // Data
 export const CARDS = {
   people: [
@@ -39,18 +42,39 @@ export const CARDS = {
 export const cardOrder = ['people', 'rooms', 'weapons'];
 
 // State
-export const storage = ls.storageAvailable();
-
-export const cards = initState().cards;
-export const players = initState().players;
+export const theme = initTheme();
+export const cards = initClues().cards;
+export const players = initClues().players;
 
 // Helpers
-function initState() {
-  // Init cards and players state from scratch or localStorage
+function initTheme() {
+  // From scratch or localStorage
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const pref = prefersDark ? 'dark' : 'light';
+
+  if (!hasStorage) {
+    document.querySelector('body').className = pref;
+    return pref;
+  }
+
+  if (!ls.hasStoredState('theme')) {
+    document.querySelector('body').className = pref;
+    localStorage.setItem('theme', pref);
+    return pref;
+  }
+
+  if (ls.hasStoredState('theme')) {
+    document.querySelector('body').className = ls.theme();
+    return ls.theme();
+  }
+}
+
+function initClues() {
+  // From scratch or localStorage
   let cards;
   let players;
 
-  if (!ls.storageAvailable()) {
+  if (!hasStorage) {
     cards = Cards();
     players = [Player('Player1')];
   }

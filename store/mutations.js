@@ -1,5 +1,12 @@
 import Vue from 'vue';
 
+// Theme
+export const TOGGLE_THEME = (state) => {
+  const t = state.theme == 'dark' ? 'light' : 'dark';
+  document.querySelector('body').className = t;
+  Vue.set(state, 'theme', t);
+};
+
 // Player CRUD
 export const RESET_PLAYERS = (state) => {
   Vue.set(state, 'players', [state.Player('Player1')]);
@@ -30,7 +37,7 @@ export const REMOVE_PLAYER = (state, index) => {
   Vue.set(state, 'players', newPlayerList);
 };
 
-export const UPDATE_PLAYER_CARD_BTN = (state, obj) => {
+export const UPDATE_PLAYER_TRACKER_BTN = (state, obj) => {
   // obj = {index, card}
   // update state.players[index].cards[card].trackerBtn
   const index = obj.index;

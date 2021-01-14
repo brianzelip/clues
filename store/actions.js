@@ -1,3 +1,9 @@
+// Theme
+export const toggleTheme = ({ commit }) => {
+  commit('TOGGLE_THEME');
+};
+
+// Reset
 export const resetCardsAndPlayers = ({ commit }) => {
   commit('RESET_CARDS');
   commit('RESET_PLAYERS');
@@ -16,8 +22,8 @@ export const removePlayer = ({ commit }, index) => {
   commit('REMOVE_PLAYER', index);
 };
 
-export const updatePlayerCardBtn = ({ commit }, obj) => {
-  commit('UPDATE_PLAYER_CARD_BTN', obj);
+export const updatePlayerTrackerBtn = ({ commit }, obj) => {
+  commit('UPDATE_PLAYER_TRACKER_BTN', obj);
 };
 
 export const togglePlayerCardSeen = ({ commit }, obj) => {
