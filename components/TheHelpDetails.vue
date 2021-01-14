@@ -3,7 +3,11 @@
     <summary>Help</summary>
     <ol class="list-reset pt2 pl2 primary">
       <li v-if="!hasStorage">
-        ⚠️ Your clues will reset if you navigate away or refresh this page.
+        ⚠️ Your browser doesn't support
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API"
+          >local storage</a
+        >, so clues will reset if you navigate away or refresh this page.
       </li>
       <li>Click player name to edit.</li>
       <li>Click + to add player.</li>

@@ -6,8 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "npm run clean && parcel build index.html && npm run css",
+    "clean": "rm -rf dist .cache",
+    "css": "postcss dist/*.css -u autoprefixer --replace"
   },
+  "browserslist": [
+    "last 4 versions",
+    "> 1%",
+    "not dead"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brianzelip/clues.git"
@@ -23,7 +30,10 @@
   "homepage": "https://github.com/brianzelip/clues#readme",
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.2.0",
+    "autoprefixer": "^10.2.1",
     "parcel-bundler": "^1.12.4",
+    "postcss": "^8.2.4",
+    "postcss-cli": "^8.3.1",
     "vue-template-compiler": "^2.6.12"
   },
   "dependencies": {
