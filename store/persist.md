@@ -2,10 +2,10 @@
 
 There are two main events to check in with localStorage:
 
-1. On initial page/app load
+1. On initial page load
 2. After vuex state is mutated
 
-## On initial page/app load
+## On initial page load
 
 On page load, if `localStorage.cards` and `localStorage.players` exist, init vuex state with them, then render out the rest of the app.
 
