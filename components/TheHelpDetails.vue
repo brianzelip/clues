@@ -9,19 +9,19 @@
           >local storage</a
         >, so clues will reset if you navigate away or refresh this page.
       </li>
-      <li>Click player name to edit.</li>
+      <li>Click opponent player name to edit.</li>
       <li>Click + to add player.</li>
-      <li>Click x to remove player.</li>
-      <li>Check the mine box for your cards to track who's seen them.</li>
+      <li>Click ⨉ to remove player.</li>
+      <li>Check mine box for your cards to track who's seen them.</li>
       <li>Click card names to cross them off (not it) or circle them (it).</li>
       <li>
-        Click player card buttons to cycle through 6 states:
+        Click opponent player card buttons to cycle through 6 states:
         <ol class="mb0 pt1 pl3 secondary">
           <li class="mb0">unknown (<span class="italic">empty</span>)</li>
           <li class="mb0">maybe (?)</li>
-          <li class="mb0">maybe x2 (? x2)</li>
-          <li class="mb0">maybe x3 (? x3)</li>
-          <li class="mb0">does not have card (X)</li>
+          <li class="mb0">maybe ⨉2 (? ⨉2)</li>
+          <li class="mb0">maybe ⨉3 (? ⨉3)</li>
+          <li class="mb0">does not have card (⨉)</li>
           <li class="mb0">has card (★)</li>
         </ol>
       </li>

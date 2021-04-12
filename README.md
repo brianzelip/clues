@@ -10,17 +10,17 @@ Track clues for the whodunnit murder mystery game [Clue](https://en.wikipedia.or
 
 ## Help
 
-- Click player name to edit.
+- Click opponent player name to edit.
 - Click + to add player.
-- Click x to remove player.
-- Check the mine box for your cards to track who's seen them.
+- Click ⨉ to remove player.
+- Check mine box for your cards to track who's seen them.
 - Click card names to cross them off (not it) or circle them (it).
-- Click player card buttons to cycle through 6 states:
+- Click opponent player card buttons to cycle through 6 states:
   1. unknown (empty)
   2. maybe (?)
-  3. maybe x2 (? x2)
-  4. maybe x3 (? x3)
-  5. does not have card (X)
+  3. maybe ⨉2 (? ⨉2)
+  4. maybe ⨉3 (? ⨉3)
+  5. does not have card (⨉)
   6. has card (★)
 - Click ↺ to reset clues. _Data is stored in the browser, not on the server_.
 
