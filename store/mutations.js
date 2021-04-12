@@ -40,6 +40,15 @@ export const REMOVE_PLAYER = (state, index) => {
 export const UPDATE_PLAYER_TRACKER_BTN = (state, obj) => {
   // obj = {index, card}
   // update state.players[index].cards[card].trackerBtn
+  /**
+   * Button states:
+   *  1: Unknown (empty)
+   *  2: Maybe (?)
+   *  3: Maybe ⨉2 (? ⨉2)
+   *  4: Maybe ⨉3 (? ⨉3)
+   *  5: Does not have card (⨉)
+   *  6: Has card (★)
+   */
   const index = obj.index;
   const card = obj.card;
 
@@ -72,14 +81,18 @@ export const RESET_CARDS = (state) => {
   Vue.set(state, 'cards', state.Cards());
 };
 
-export const UPDATE_CARD_WHODUNNIT_STATE = (state, key) => {
-  const wcs = state.cards[key].whodunnitCardState;
+export const SET_CARD_WHODUNNIT_STATE = (state, obj) => {
+  // obj = {key, wcs}
+  /**
+   * Card states:
+   *  0: Unknown
+   *  1: Not it (adds css strike)
+   *  2: It (adds css border)
+   */
+  const key = obj.key;
+  const wcs = obj.wcs;
 
-  if (wcs < 2) {
-    Vue.set(state.cards[key], 'whodunnitCardState', wcs + 1);
-  } else {
-    Vue.set(state.cards[key], 'whodunnitCardState', 0);
-  }
+  Vue.set(state.cards[key], 'whodunnitCardState', wcs);
 };
 
 export const TOGGLE_CARD_MINE = (state, key) => {
