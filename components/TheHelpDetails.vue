@@ -10,8 +10,8 @@
         >, so clues will reset if you navigate away or refresh this page.
       </li>
       <li>Click opponent player name to edit.</li>
-      <li>Click + to add player.</li>
-      <li>Click ⨉ to remove player.</li>
+      <li>Click + to add opponent player.</li>
+      <li>Click ⨉ to remove opponent player.</li>
       <li>Check mine box for your cards to track who's seen them.</li>
       <li>Click card names to cross them off (not it) or circle them (it).</li>
       <li>
