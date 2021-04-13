@@ -11,8 +11,8 @@ Track clues for the whodunnit murder mystery game [Clue](https://en.wikipedia.or
 ## Help
 
 - Click opponent player name to edit.
-- Click + to add player.
-- Click ⨉ to remove player.
+- Click + to add opponent player.
+- Click ⨉ to remove opponent player.
 - Check mine box for your cards to track who's seen them.
 - Click card names to cross them off (not it) or circle them (it).
 - Click opponent player card buttons to cycle through 6 states:
