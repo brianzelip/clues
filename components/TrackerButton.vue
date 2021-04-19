@@ -15,10 +15,10 @@ export default {
         ? " "
         : state == 1 // maybe
         ? "?"
-        : state == 2 // maybe x2
-        ? "? x2"
-        : state == 3 // maybe x3
-        ? "? x3"
+        : state == 2 // maybe twice
+        ? "? ⨉2"
+        : state == 3 // maybe thrice
+        ? "? ⨉3"
         : state == 4 // confirm not has card
         ? "X"
         : state == 5 // confirm has card
