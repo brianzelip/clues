@@ -1,4 +1,9 @@
-/* Dark/light mode */
+/**
+ * Dark and light mode themes
+ * - Provides dark/light theme on page load via prefers-color-scheme, avoids
+ *   FOUC on page load if prefers dark from adding body.dark
+ * - Toggle body.dark/body.light on button click
+ */
 
 :root {
   /**
@@ -13,42 +18,9 @@
   --black-7: rgb(221, 221, 221); /* #ddd */
   --black-8: rgb(239, 239, 239); /* #efefef */
   --black-9: rgb(245, 245, 245);
-  --white: white;
-
   --blue: #0074d9;
   --green: #12b337;
-
-  /**
-   * Light theme vars
-   */
-  --background-color--lightmode: var(--white);
-  --color--lightmode: var(--black-3);
-
-  --reset-button-svg-fill--lightmode: var(--th-svg-fill--lightmode);
-  --reset-button-svg-fill-hover--lightmode: var(--th-svg-fill-hover--lightmode);
-
-  --table-border-color--lightmode: var(--black-7);
-  --thead-th-background--lightmode: var(--black-7);
-  --tbody-th-background--lightmode: var(--background-color--lightmode);
-  --cell-border-color--lightmode: var(--black-7);
-  --th-border-color--lightmode: var(--cell-border-color--lightmode);
-  --td-border-color--lightmode: var(--cell-border-color--lightmode);
-  --tbody-th-circle-border-color--lightmode: var(--color--lightmode);
-  --tbody-th-strike-text-decoration--lightmode: var(--color--lightmode);
-
-  --th-svg-fill--lightmode: var(--black-6);
-  --th-svg-fill-hover--lightmode: var(--color--lightmode);
-
-  --button-border-color--lightmode: var(--color--lightmode);
-  --button-background--lightmode: var(--black-7);
-
-  --unseen-svg-fill--lightmode: var(--black-6);
-  --seen-svg-fill--lightmode: var(--color--lightmode);
-
-  --row-even-background--lightmode: var(--black-9);
-  --row-hover-background--lightmode: var(--black-8);
-
-  --link-color--lightmode: var(--blue);
+  --white: white;
 
   /**
    * Dark theme vars
@@ -81,10 +53,42 @@
   --row-hover-background--darkmode: var(--black-1);
 
   --link-color--darkmode: var(--green);
+
+  /**
+   * Light theme vars
+   */
+  --background-color--lightmode: var(--white);
+  --color--lightmode: var(--black-3);
+
+  --reset-button-svg-fill--lightmode: var(--th-svg-fill--lightmode);
+  --reset-button-svg-fill-hover--lightmode: var(--th-svg-fill-hover--lightmode);
+
+  --table-border-color--lightmode: var(--black-7);
+  --thead-th-background--lightmode: var(--black-7);
+  --tbody-th-background--lightmode: var(--background-color--lightmode);
+  --cell-border-color--lightmode: var(--black-7);
+  --th-border-color--lightmode: var(--cell-border-color--lightmode);
+  --td-border-color--lightmode: var(--cell-border-color--lightmode);
+  --tbody-th-circle-border-color--lightmode: var(--color--lightmode);
+  --tbody-th-strike-text-decoration--lightmode: var(--color--lightmode);
+
+  --th-svg-fill--lightmode: var(--black-6);
+  --th-svg-fill-hover--lightmode: var(--color--lightmode);
+
+  --button-border-color--lightmode: var(--color--lightmode);
+  --button-background--lightmode: var(--black-7);
+
+  --unseen-svg-fill--lightmode: var(--black-6);
+  --seen-svg-fill--lightmode: var(--color--lightmode);
+
+  --row-even-background--lightmode: var(--black-9);
+  --row-hover-background--lightmode: var(--black-8);
+
+  --link-color--lightmode: var(--blue);
 }
 
 /*
- * Dark pref pre theme
+ * Dark preference page load theme
  */
 @media (prefers-color-scheme: dark) {
   body {
@@ -165,9 +169,8 @@
 }
 
 /*
- * Light pref pre theme
+ * Light preference page load theme
  */
-
 @media (prefers-color-scheme: light) {
   body {
     background-color: var(--background-color--lightmode);
@@ -247,7 +250,86 @@
 }
 
 /*
- * Light theme
+ * Dark theme toggle
+ */
+body.dark {
+  background-color: var(--background-color--darkmode);
+  color: var(--color--darkmode);
+}
+
+body.dark a {
+  color: var(--link-color--darkmode);
+}
+
+body.dark .add svg,
+body.dark .remove svg,
+body.dark .reset svg {
+  fill: var(--th-svg-fill--darkmode);
+}
+
+body.dark .add:hover svg,
+body.dark .remove:hover svg,
+body.dark .reset:hover svg {
+  fill: var(--th-svg-fill-hover--darkmode);
+}
+
+body.dark table {
+  border: 1px solid var(--table-border-color--darkmode);
+}
+
+body.dark thead th {
+  color: var(--color--darkmode);
+  background-color: var(--thead-th-background--darkmode);
+}
+
+body.dark tbody th {
+  background-color: var(--tbody-th-background--darkmode);
+}
+
+body.dark tr:nth-child(even),
+body.dark tr:nth-child(even) th {
+  background-color: var(--row-even-background--darkmode);
+}
+
+body.dark tr:not(.spacer):hover {
+  background-color: var(--row-hover-background--darkmode);
+}
+body.dark tbody tr:not(.spacer):hover th {
+  background-color: var(--row-hover-background--darkmode);
+}
+
+body.dark td,
+body.dark th {
+  color: inherit;
+  border-bottom-color: var(--cell-border-color--darkmode);
+}
+body.dark td {
+  border-left-color: var(--cell-border-color--darkmode);
+}
+
+body.dark .circle {
+  border-color: var(--tbody-th-circle-border-color--darkmode);
+}
+
+body.dark .strike {
+  text-decoration-color: var(--tbody-th-strike-text-decoration--darkmode);
+}
+
+body.dark input.tracker {
+  border-color: var(--button-border-color--darkmode);
+  background-color: var(--button-background--darkmode);
+}
+
+body.dark .unseen {
+  fill: var(--unseen-svg-fill--darkmode);
+}
+
+body.dark .seen {
+  fill: var(--seen-svg-fill--darkmode);
+}
+
+/*
+ * Light theme toggle
  */
 body.light {
   background-color: var(--background-color--lightmode);
@@ -323,84 +405,4 @@ body.light .unseen {
 
 body.light .seen {
   fill: var(--seen-svg-fill--lightmode);
-}
-
-/*
- * Dark theme
- */
-
-body.dark {
-  background-color: var(--background-color--darkmode);
-  color: var(--color--darkmode);
-}
-
-body.dark a {
-  color: var(--link-color--darkmode);
-}
-
-body.dark .add svg,
-body.dark .remove svg,
-body.dark .reset svg {
-  fill: var(--th-svg-fill--darkmode);
-}
-
-body.dark .add:hover svg,
-body.dark .remove:hover svg,
-body.dark .reset:hover svg {
-  fill: var(--th-svg-fill-hover--darkmode);
-}
-
-body.dark table {
-  border: 1px solid var(--table-border-color--darkmode);
-}
-
-body.dark thead th {
-  color: var(--color--darkmode);
-  background-color: var(--thead-th-background--darkmode);
-}
-
-body.dark tbody th {
-  background-color: var(--tbody-th-background--darkmode);
-}
-
-body.dark tr:nth-child(even),
-body.dark tr:nth-child(even) th {
-  background-color: var(--row-even-background--darkmode);
-}
-
-body.dark tr:not(.spacer):hover {
-  background-color: var(--row-hover-background--darkmode);
-}
-body.dark tbody tr:not(.spacer):hover th {
-  background-color: var(--row-hover-background--darkmode);
-}
-
-body.dark td,
-body.dark th {
-  color: inherit;
-  border-bottom-color: var(--cell-border-color--darkmode);
-}
-body.dark td {
-  border-left-color: var(--cell-border-color--darkmode);
-}
-
-body.dark .circle {
-  border-color: var(--tbody-th-circle-border-color--darkmode);
-}
-
-body.dark .strike {
-  text-decoration-color: var(--tbody-th-strike-text-decoration--darkmode);
-}
-
-body.dark input.tracker {
-  border-color: var(--button-border-color--darkmode);
-  background-color: var(--button-background--darkmode);
-}
-
-body.dark .unseen {
-  fill: var(--unseen-svg-fill--darkmode);
-}
-
-body.dark .seen {
-  fill: var(--seen-svg-fill--darkmode);
 }
